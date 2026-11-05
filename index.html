@@ -1,0 +1,2738 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sekiz ders için vize hazırlığı, alıştırmalar ve yanlış tekrarı.">
+  <title>Vize Atölyesi</title>
+<style>
+:root{font-family:system-ui,"Segoe UI",sans-serif;color:#232039;background:#f7f6fb;--ink:#232039;--muted:#605b75;--line:#e5e1ee;--accent:#5233c3;--soft:#eee8ff;--paper:#fff;--good:#176242;--bad:#9e3436}
+*{box-sizing:border-box}
+body{margin:0;min-width:280px}
+a{color:var(--accent)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid #7655ed;outline-offset:4px}
+.skip{position:absolute;top:-100px;background:#fff;padding:12px;z-index:2}
+.skip:focus{top:8px}
+.shell{max-width:1120px;margin:auto;padding-inline:24px}
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;justify-content:space-between;align-items:center;min-height:72px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:780}
+.mark{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:var(--accent);color:white;font-weight:850}
+.local{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.local i{height:7px;width:7px;background:#3b986e;border-radius:50%}
+main{min-height:76vh}
+.hero{margin-top:36px;background:#231944;color:white;border-radius:24px;padding:clamp(24px,5vw,54px);position:relative;overflow:hidden}
+.hero:after{content:"";pointer-events:none;position:absolute;width:315px;height:315px;right:-100px;top:-150px;border:1px solid #9d82fa60;border-radius:50%;box-shadow:0 0 0 24px #9d82fa20,0 0 0 48px #9d82fa15,0 0 0 72px #9d82fa10}
+.hero p{color:#d9cfef;max-width:49ch;margin-bottom:0}
+.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.73rem;font-weight:800;color:#6a4bc7}
+.hero .eyebrow{color:#c9b5ff}
+h1,h2,h3,p{overflow-wrap:anywhere}
+h1{line-height:1.09;font-size:clamp(2rem,5vw,3.65rem);letter-spacing:-.045em;margin:.28em 0}
+p,li{line-height:1.58}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.section-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:27px}
+.section-title h2{margin:0 0 13px;font-size:1.45rem}
+.muted,.small{color:var(--muted)}
+.small{font-size:.82rem}
+.card{display:flex;flex-direction:column;gap:8px;min-height:185px;border:1px solid var(--line);border-radius:17px;background:white;padding:17px;color:inherit;text-decoration:none}
+.card:hover{border-color:#8a70df;box-shadow:0 4px 14px #41298415}
+.card h3{font-size:1.05rem;line-height:1.25;margin:0}
+.card .small:last-child{margin-top:auto}
+.badge{align-self:flex-start;background:var(--soft);color:#482aaf;font-size:.73rem;font-weight:800;padding:5px 8px;border-radius:8px}
+.footer{display:flex;justify-content:space-between;gap:12px;padding-block:26px;color:var(--muted);font-size:.75rem}
+.back{display:inline-block;margin-top:26px}
+.course-head{padding:18px 0 22px}
+.course-head h1{font-size:clamp(1.8rem,4vw,3rem)}
+.course-head p{margin:.4rem 0}
+.workspace{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(230px,1fr);gap:16px;align-items:start}
+.panel{border:1px solid var(--line);background:white;border-radius:18px;padding:clamp(15px,3vw,26px)}
+.panel h2{margin:0 0 12px;font-size:1.25rem}
+.panel li+li{margin-top:7px}
+.panel ul{padding-left:21px}
+.side{display:grid;gap:14px}
+.toolbar,.actions,.stats{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.toolbar{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.toolbar label{display:flex;gap:7px;align-items:center;font-size:.85rem;color:var(--muted)}
+.stats{font-size:.86rem;color:var(--muted);gap:14px;margin-bottom:14px}
+.btn,select{background:#fff;border:1px solid #d8d1e7;border-radius:10px;padding:8px 11px;color:var(--ink)}
+.btn:hover:not(:disabled){border-color:#8a70df;background:#f9f6ff}
+.btn:disabled{opacity:.55}
+.primary,.primary:hover:not(:disabled){background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.prompt{font-size:1.16rem;font-weight:720;line-height:1.45;margin:10px 0 14px}
+pre{background:#211a35;color:#faf5ff;border-radius:12px;padding:13px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.92rem;line-height:1.5}
+.options,.order,.pairs{display:grid;gap:8px;margin:12px 0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;text-align:left;color:inherit}
+.opt:not(:disabled):hover,.selected{background:#f3edff;border-color:#8a70df}
+.opt.correct{background:#eaf7f0;border-color:#68ad8d;color:var(--good)}
+.opt.wrong{background:#fcecec;border-color:#db9396;color:var(--bad)}
+.opt span:first-child{color:var(--muted);font-weight:800;min-width:1.35em}
+.answer{width:100%;border:1px solid #bdb5cf;border-radius:10px;padding:10px;color:var(--ink)}
+textarea.answer{min-height:100px;resize:vertical}
+.actions{margin-top:15px}
+.feedback{border-radius:11px;background:#f2edfc;padding:13px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.feedback p{margin:.25em 0}
+.feedback.good{background:#eaf7f0;color:#135337}
+.feedback.bad{background:#fcecec;color:#7d2c32}
+.pair,.step{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px;border:1px solid var(--line);border-radius:10px}
+.pair label{min-width:0}
+.pair select{max-width:55%;min-width:0}
+.step .moves{display:flex;gap:4px;flex:none}
+.moves button{min-width:35px;padding:5px}
+details summary{cursor:pointer;font-weight:750}
+.sources a{display:block;margin-top:8px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:670px){.workspace{grid-template-columns:1fr}.shell{padding-inline:14px}.hero{margin-top:18px}.pair{align-items:stretch;flex-direction:column}.pair select{max-width:none;width:100%}.local{font-size:.7rem}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}.card{min-height:125px}}
+
+</style>
+
+</head>
+<body>
+  <a class="skip" href="#main">İçeriğe geç</a>
+  <header class="top"><div class="shell bar">
+    <a class="brand" href="#" aria-label="Vize Atölyesi ana sayfa"><span class="mark" aria-hidden="true">V</span> Vize Atölyesi</a>
+    <span class="local"><i></i> İlerleme bu tarayıcıda</span>
+  </div></header>
+  <main id="main" class="shell" tabindex="-1">
+    <section class="hero">
+      <span class="eyebrow">Vize hazırlığı · Kasım 2026</span>
+      <h1>Vize Atölyesi</h1>
+      <p>Alıştırmalar henüz açılmadı. Dosyayı sohbet önizlemesi içinde görüyorsan bilgisayarına kaydet ve Edge, Chrome veya Brave’de aç. Alıştırmalar için JavaScript gerekir.</p>
+    </section>
+  </main>
+  <footer class="shell footer"><span>VİZE ATÖLYESİ</span><span>Oku · Dene · Hatırla</span></footer>
+  <noscript>Alıştırmaları açmak için tarayıcıda JavaScript’i etkinleştir.</noscript>
+<script>
+(() => {
+const courses = [
+  {
+    "id": "js",
+    "name": "Modern JavaScript Mimarileri",
+    "short": "JS",
+    "format": "Kod ve çıktı",
+    "source": "Hafta 1–3 sunuları · hafta 2, 4, 5 kodları",
+    "notes": [
+      "JavaScript’te string ve number farklı türlerdir. + işaretinin birleştirme mi, toplama mı yapacağını anlamak için değerlerin türüne bak.",
+      "Dizinin ilk indeksi 0’dır. Boş olmayan dizinin son indeksi length - 1 olur. Bir nesneyi başka değişkene atamak kopyasını oluşturmaz.",
+      "map elemanları dönüştürür, filter koşula uyanları seçer, find ilk eşleşmeyi bulur. return fonksiyondan değer döndürür."
+    ],
+    "links": []
+  },
+  {
+    "id": "ai",
+    "name": "Yapay Zekâ Destekli Yazılım Geliştirme",
+    "short": "YZ",
+    "format": "Kısa cevap ve senaryo",
+    "source": "GitHub · sunu 1–4 ve iki ünite notu",
+    "notes": [
+      "Training (eğitim) sırasında modelin ağırlıkları öğrenilir. Inference (çıkarım) sırasında model bu ağırlıklarla cevap üretir.",
+      "Context window, modelin tek istekte işleyebildiği içerik sınırıdır. Modelin ürettiği bir iddiayı resmî kaynaktan, kodu ise küçük bir testle kontrol et.",
+      "İyi bir prompt ne istediğini, modelin hangi bilgileri kullanacağını ve cevabın hangi koşulları sağlaması gerektiğini açıkça belirtir."
+    ],
+    "links": [
+      [
+        "Ders sunuları ve notları",
+        "https://gusanmaz.github.io/oyg213-yz-destekli-kodlama/"
+      ]
+    ]
+  },
+  {
+    "id": "web",
+    "name": "Bilgisayar Teknolojileri ve Web Mimarisi",
+    "short": "WEB",
+    "format": "Şema ve kısa cevap",
+    "source": "Hafta 1, 4 ve 5 · DIKW, ağlar, DNS",
+    "notes": [
+      "DIKW sırası Data (veri), Information (enformasyon), Knowledge (bilgi), Wisdom (bilgelik) şeklindedir. Örneğin tek tek sıcaklık ölçümleri veridir. Günlük ortalama, ölçümleri özetleyen enformasyondur.",
+      "Access point cihazları Wi-Fi üzerinden yerel ağa bağlar. Router farklı IP ağları arasında paket iletir.",
+      "DNS alan adının kaydını bulur. Hedef IP belirlendikten sonra router’lar paketleri o adrese doğru iletir."
+    ],
+    "links": []
+  },
+  {
+    "id": "etik",
+    "name": "Etik Davranış",
+    "short": "ETK",
+    "format": "Çoktan seçmeli test",
+    "source": "Dört sunu · etik ve ahlâk, çağlar, gelişim, ödev",
+    "notes": [
+      "Faydacılık sonuçları, erdem etiği karakteri, Kant’ın ödev etiği ise kişinin hangi gerekçeyle davrandığını değerlendirir.",
+      "Kohlberg’de evreyi anlamak için kişinin gerekçesine bak. Ceza korkusu, yakın çevrenin onayı ve toplumsal düzeni koruma farklı gerekçelerdir.",
+      "Hipotetik buyruk bir koşula bağlıdır. Kategorik buyruk koşulsuzdur. Otonomi, kişinin aklıyla benimsediği ilkeye göre hareket etmesidir."
+    ],
+    "links": []
+  },
+  {
+    "id": "guvenlik",
+    "name": "Web Güvenliği",
+    "short": "SEC",
+    "format": "Çoktan seçmeli test",
+    "source": "Dört PDF · siber güvenlik, OWASP 2021, ZAP ve şifreleme",
+    "notes": [
+      "CIA üçlüsü Confidentiality (gizlilik), Integrity (bütünlük) ve Availability (erişilebilirlik) ilkelerinden oluşur.",
+      "Dersin OWASP slaytları 2021 sıralamasını kullanır. XSS’de kod tarayıcıda çalışır, CSRF kullanıcının oturumundan yararlanır, SSRF’de isteği sunucu gönderir.",
+      "AES’in blok boyutu 128 bittir. Diffie–Hellman ortak anahtar üzerinde anlaşmaya yarar. RSA örneklerinde modüler ters için e × d ≡ 1 (mod φ(n)) koşulunu kullan."
+    ],
+    "links": [
+      [
+        "OWASP Top 10 · ders sürümü",
+        "https://top10.owasp.org/2021/"
+      ]
+    ]
+  },
+  {
+    "id": "ibe",
+    "name": "İnsan Bilgisayar Etkileşimi",
+    "short": "İBE",
+    "format": "Vaka ve kısa cevap",
+    "source": "Beş sunu ve beş bölüm notu",
+    "notes": [
+      "Bir arayüzü değerlendirirken kimin, hangi görevi, hangi ortamda yaptığını düşün.",
+      "Kullanıcı merkezli tasarımda önce ihtiyacı anlamaya çalış. Tasarımı kullanıcılarla dene ve bulgulara göre değiştir.",
+      "Usability (kullanılabilirlik) için etkililik, verimlilik ve memnuniyeti ölç. UX (kullanıcı deneyimi), kullanıcının ürünle yaşadığı deneyimin tamamıyla ilgilidir."
+    ],
+    "links": []
+  },
+  {
+    "id": "bulut",
+    "name": "Bulut Bilişim",
+    "short": "CLD",
+    "format": "Mimari ve vaka",
+    "source": "Hafta 1–4 · hizmet modelleri, CDN, güvenlik ve izleme",
+    "notes": [
+      "IaaS, PaaS ve SaaS, sağlayıcının ve kullanıcının hangi katmanları yönettiğini anlatır.",
+      "CDN’de cache hit, dosyanın cache’de bulunmasıdır. Cache miss durumunda CDN dosyayı origin server’dan alabilir.",
+      "Authentication kullanıcının kimliğini doğrular. Authorization hangi işlemlere izni olduğunu kontrol eder. Log olayları, metric ölçümleri kaydeder. Alarm belirlenen koşul gerçekleşince haber verir."
+    ],
+    "links": []
+  },
+  {
+    "id": "three",
+    "name": "3DJS Programlama",
+    "short": "3D",
+    "format": "Kod ve sahne",
+    "source": "Yerel küp, güneş sistemi, ödev · OThreeJS 01–06",
+    "notes": [
+      "Scene nesneleri barındırır. Kamera sahneye nereden baktığını belirler. renderer.render(scene, camera) görüntüyü çizer.",
+      "Mesh, geometry ve material’ı birleştirir. Bir Group döndüğünde ona bağlı nesneler de grupla birlikte hareket eder.",
+      "Perspektif ve ortografik kamera arasındaki farkı görsel boyut üzerinden düşün. Gölge için renderer, ışık ve ilgili Mesh ayarlarına bak."
+    ],
+    "links": [
+      [
+        "OThreeJS · altı haftanın kodu",
+        "https://github.com/onarcanhub/OThreeJS"
+      ]
+    ]
+  }
+];
+
+const js = [
+  {
+    "id": "js-1",
+    "kind": "q",
+    "p": "Bir fonksiyon hesapladığı sonucu hangi anahtar sözcükle döndürür?",
+    "a": "return",
+    "options": [
+      "return",
+      "console.log",
+      "typeof",
+      "const"
+    ],
+    "why": "console.log sonucu konsola yazar. Fonksiyonun çağrıldığı yerde kullanılacak değeri return döndürür."
+  },
+  {
+    "id": "js-2",
+    "kind": "q",
+    "p": "const ile tanımlanan bir nesnenin özelliğini değiştirebilir misin?",
+    "a": "Evet, nesnenin özellikleri değiştirilebilir",
+    "options": [
+      "Evet, nesnenin özellikleri değiştirilebilir",
+      "Hayır, const nesneyi dondurur",
+      "Nesne otomatik olarak kopyalanır",
+      "Her değişiklik hata verir"
+    ],
+    "why": "const, değişkene başka bir değer atamayı engeller. Nesnenin özelliklerini değiştirmeye izin verir."
+  },
+  {
+    "id": "js-3",
+    "kind": "q",
+    "p": "Fiyatı 100 TL’nin altında olan bütün ürünleri yeni bir diziye almak için hangi metodu kullanırsın?",
+    "a": "filter",
+    "options": [
+      "filter",
+      "find",
+      "map",
+      "typeof"
+    ],
+    "why": "filter, koşulu sağlayan elemanları içeren yeni bir dizi döndürür."
+  },
+  {
+    "id": "js-4",
+    "kind": "q",
+    "p": "find hiçbir eşleşme bulamazsa ne döndürür?",
+    "a": "undefined",
+    "options": [
+      "undefined",
+      "[]",
+      "false",
+      "null"
+    ],
+    "why": "find, ilk eşleşen elemanı döndürür. Eşleşme yoksa sonuç undefined olur."
+  },
+  {
+    "id": "js-5",
+    "kind": "q",
+    "p": "Boş olmayan bir dizinin son elemanının indeksi nedir?",
+    "a": "length - 1",
+    "options": [
+      "length - 1",
+      "length",
+      "length + 1",
+      "Daima 0"
+    ],
+    "why": "Dizi indeksleri sıfırdan başladığı için son indeks length - 1 olur."
+  },
+  {
+    "id": "js-6",
+    "kind": "t",
+    "p": "Konsolda ne görünür?\nconsole.log(7 === '7');",
+    "a": "false",
+    "why": "=== hem değeri hem türü karşılaştırır. 7 bir sayı, '7' ise bir string."
+  },
+  {
+    "id": "js-7",
+    "kind": "t",
+    "p": "Konsolda ne görünür?\nconst a = {x: 2};\nconst b = a;\nb.x = 9;\nconsole.log(a.x);",
+    "a": "9",
+    "why": "a ve b aynı nesneyi gösterir. b.x değişince a.x de aynı değeri okur."
+  },
+  {
+    "id": "js-8",
+    "kind": "t",
+    "p": "Konsolda ne görünür?\nfunction f(x) { x * 2; }\nconsole.log(f(4));",
+    "a": "undefined",
+    "why": "Fonksiyon return kullanmadığı için çağrının sonucu undefined olur."
+  },
+  {
+    "id": "js-9",
+    "kind": "o",
+    "p": "Boş bir diziyi de hesaba katarak ortalama hesaplama adımlarını sırala.",
+    "a": [
+      "Dizinin boş olup olmadığını denetle",
+      "Toplamı sıfırdan başlat",
+      "Elemanları toplama ekle",
+      "Toplamı eleman sayısına böl"
+    ],
+    "why": "Dizi boşsa eleman sayısına bölmeden önce bu durumu ele al."
+  },
+  {
+    "id": "js-10",
+    "kind": "m",
+    "p": "Her iş için uygun dizi metodunu seç.",
+    "a": [
+      [
+        "Bütün ürünlerin adlarını çıkar",
+        "map"
+      ],
+      [
+        "Stokta olanların tümünü seç",
+        "filter"
+      ],
+      [
+        "Bir kimliğin ilk eşleşmesini bul",
+        "find"
+      ]
+    ],
+    "why": "map elemanları dönüştürür. filter uygun elemanları seçer. find ilk eşleşmeyi verir."
+  },
+  {
+    "id": "js-11",
+    "kind": "w",
+    "p": "Bir ürün dizisi ve bütçe alan bir fonksiyon yaz. Fiyatı bütçeyi aşmayan ürünlerin adlarını bir dizi olarak döndür.",
+    "a": "const uygunAdlar = (urunler, butce) => urunler.filter(u => u.fiyat <= butce).map(u => u.ad);",
+    "why": "Bütçeye eşit fiyatı da dahil et. Sonuç yalnızca ürün adlarını içersin."
+  }
+];
+
+const ai = [
+  {
+    "id": "ai-1",
+    "kind": "q",
+    "p": "Bir LLM metni işlerken token neyi ifade eder?",
+    "a": "Modelin işlediği metin birimi",
+    "options": [
+      "Modelin işlediği metin birimi",
+      "Her zaman bir tam kelime",
+      "Her zaman bir karakter",
+      "Bir model ağırlığı"
+    ],
+    "why": "Token, modelin işlediği bir metin parçasıdır. Tam bir kelime, kelimenin bir bölümü veya noktalama işareti olabilir."
+  },
+  {
+    "id": "ai-2",
+    "kind": "q",
+    "p": "Bir LLM, öğrenilmiş ağırlıklarıyla bir soruya cevap üretiyor. Bu aşamanın adı nedir?",
+    "a": "Inference (çıkarım)",
+    "options": [
+      "Inference (çıkarım)",
+      "Pre-training (ön eğitim)",
+      "Fine-tuning (ince ayar)",
+      "Alignment (hizalama)"
+    ],
+    "why": "Inference (çıkarım) sırasında model, eğitimde öğrendiği ağırlıkları kullanarak çıktı üretir."
+  },
+  {
+    "id": "ai-3",
+    "kind": "q",
+    "p": "Bir LLM daha önce duymadığın bir npm paketi önerdi. Paketin gerçekten var olduğunu nasıl doğrularsın?",
+    "a": "npm kayıtlarına ve resmî dokümantasyona bakmak",
+    "options": [
+      "npm kayıtlarına ve resmî dokümantasyona bakmak",
+      "Modelden öneriyi tekrarlamasını istemek",
+      "Temperature değerini artırmak",
+      "Paketin var olduğunu varsaymak"
+    ],
+    "why": "Paketin adını npm kayıtlarında ara. Sürümü ve kullanım biçimini resmî dokümantasyondan kontrol et."
+  },
+  {
+    "id": "ai-4",
+    "kind": "q",
+    "p": "RAG kullanan bir uygulama cevap üretmeden önce ne yapar?",
+    "a": "İlgili belgeleri bulup modelin context’ine ekler",
+    "options": [
+      "İlgili belgeleri bulup modelin context’ine ekler",
+      "Her sorguda modeli yeniden eğitir",
+      "Cevabın kesinlikle doğru olmasını sağlar",
+      "Bütün belgeleri modelin ağırlıklarına kaydeder"
+    ],
+    "why": "Sorguyla ilgili belge parçalarını bulur ve bunları modelin context’ine ekler."
+  },
+  {
+    "id": "ai-5",
+    "kind": "q",
+    "p": "Prompt’a iki örnek girdi ve beklenen çıktıyı ekledin. Bu hangi yöntemdir?",
+    "a": "Few-shot",
+    "options": [
+      "Few-shot",
+      "Zero-shot",
+      "İnce ayar",
+      "Tokenizer eğitimi"
+    ],
+    "why": "Few-shot prompting’de model, prompt içindeki az sayıda örneği kullanır."
+  },
+  {
+    "id": "ai-6",
+    "kind": "q",
+    "p": "Bir kodlama ajanı (coding agent) hangi bileşenlerle çalışır?",
+    "a": "Model, araç ve geri bildirim döngüsü",
+    "options": [
+      "Model, araç ve geri bildirim döngüsü",
+      "Yalnız bir tokenizer",
+      "Sadece model ağırlıkları",
+      "Yalnız bir IDE teması"
+    ],
+    "why": "Model bir araç çağırabilir, sonucunu okuyabilir ve sonraki adımı bu sonuca göre belirleyebilir."
+  },
+  {
+    "id": "ai-7",
+    "kind": "q",
+    "p": "Bir web uygulamasında gizli API key nerede saklanmalı?",
+    "a": "Sunucudaki gizli yapılandırmaya",
+    "options": [
+      "Sunucudaki gizli yapılandırmaya",
+      "Herkese açık JavaScript dosyasına",
+      "Git geçmişine",
+      "Arayüzün HTML verisine"
+    ],
+    "why": "Tarayıcıya gönderilen HTML ve JavaScript kullanıcı tarafından okunabilir. Gizli anahtarı sunucuda tut."
+  },
+  {
+    "id": "ai-8",
+    "kind": "m",
+    "p": "Her LLM terimini işleviyle eşleştir.",
+    "a": [
+      [
+        "Context window (bağlam penceresi)",
+        "Modelin tek istekte işleyebildiği içerik sınırı"
+      ],
+      [
+        "Temperature",
+        "Örneklemedeki rastgeleliği etkileyen ayar"
+      ],
+      [
+        "Tool calling (araç çağırma)",
+        "Dışarıdaki bir işlevi çalıştırıp sonucunu alma"
+      ]
+    ],
+    "why": "Context window modelin işleyebildiği içeriği, temperature örneklemeyi, tool calling ise araç çağrısını ilgilendirir."
+  },
+  {
+    "id": "ai-9",
+    "kind": "o",
+    "p": "Bir LLM’nin önerdiği kodu kontrol etmek için izleyeceğin adımları sırala.",
+    "a": [
+      "Beklenen davranışı belirt",
+      "Üretilen değişikliği incele",
+      "Normal ve sınır durumlarını dene",
+      "Sonuçları kabul ölçütüyle karşılaştır"
+    ],
+    "why": "Önce beklediğin davranışı yaz. Ardından kodu incele ve farklı girdilerle test et."
+  },
+  {
+    "id": "ai-10",
+    "kind": "w",
+    "p": "LLM, bir kütüphanede bulunduğunu iddia ettiği bir metot önerdi. Bu metodu nasıl doğrular, bulamazsan kodu nasıl düzeltirsin?",
+    "a": "Önce resmî dokümantasyonu ve kurulu sürümü kontrol ederim. Metot varsa küçük bir örnekte çalıştırırım. Yoksa dokümantasyonda yer alan bir metotla değiştirip normal ve sınır durumlarını test ederim.",
+    "why": "Cevabında resmî dokümantasyonu, kurulu sürümü ve küçük bir test örneğini kullan."
+  },
+  {
+    "id": "ai-11",
+    "kind": "w",
+    "p": "“Notları hesaplayan kod yaz” prompt’unu daha açık yaz. Boş dizi ve sayı olmayan bir eleman için beklediğin sonucu belirt.",
+    "a": "JavaScript ile sayı dizisinin ortalamasını döndür. Boş dizi için null döndür, sayı dışı eleman varsa TypeError üret. Örnek: [40,60] → 50.",
+    "why": "Programlama dilini, girdiyi, çıktıyı ve iki sınır durumunda beklediğin davranışı açıkça yaz."
+  }
+];
+
+const web = [
+  {
+    "id": "web-1",
+    "kind": "q",
+    "p": "Ham ölçümleri düzenleyip anlamlı bir özet çıkarmak DIKW’nin hangi basamağıdır?",
+    "a": "Enformasyon",
+    "options": [
+      "Enformasyon",
+      "Ham veri",
+      "Bilgelik",
+      "Yönlendirme"
+    ],
+    "why": "Enformasyon (information), ham verinin düzenlenip bir bağlama oturtulmasıyla oluşur.",
+    "ref": "Hafta01 - Veri, Enformasyon, Bilgi ve Bilgelik.docx · DIKW basamakları ve örnekleri"
+  },
+  {
+    "id": "web-2",
+    "kind": "q",
+    "p": "Farklı IP ağları arasında paketleri hangi cihaz iletir?",
+    "a": "Router (yönlendirici)",
+    "options": [
+      "Router (yönlendirici)",
+      "Switch (ağ anahtarı)",
+      "Access point (erişim noktası)",
+      "Monitör"
+    ],
+    "why": "Router, hedef IP adresine göre paketin hangi yoldan iletileceğine karar verir.",
+    "ref": "Hafta04-sunu02 - Networking_Foundations.pdf · Yerel ağ, switch ve access point"
+  },
+  {
+    "id": "web-3",
+    "kind": "q",
+    "p": "Kablosuz cihazları yerel ağa hangi cihaz bağlar?",
+    "a": "Access point",
+    "options": [
+      "Access point",
+      "DNS root sunucusu",
+      "SSD",
+      "TLD sunucusu"
+    ],
+    "why": "Access point (erişim noktası), cihazların Wi-Fi üzerinden yerel ağa katılmasını sağlar.",
+    "ref": "Hafta04-sunu02 - Networking_Foundations.pdf · Yerel ağ, switch ve access point"
+  },
+  {
+    "id": "web-4",
+    "kind": "q",
+    "p": "Tarayıcıya bir alan adı yazdığında DNS ne işe yarar?",
+    "a": "Alan adına karşılık gelen DNS kaydını bulmak",
+    "options": [
+      "Alan adına karşılık gelen DNS kaydını bulmak",
+      "Sayfanın HTML içeriğini tarayıcıya göndermek",
+      "CSS ile sayfanın görünümünü oluşturmak",
+      "Wi-Fi sinyali sağlamak"
+    ],
+    "why": "DNS, alan adına karşılık gelen kaydı bulmaya yarar. Örneğin bir A kaydı IPv4 adresi verir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-5",
+    "kind": "q",
+    "p": "https://example.org/ders URL’sinde path hangi bölümdür?",
+    "a": "/ders",
+    "options": [
+      "/ders",
+      "example.org",
+      "https",
+      ".org"
+    ],
+    "why": "Bu URL’de example.org alan adı, /ders ise path bölümüdür.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-6",
+    "kind": "q",
+    "p": "Mesh ağında düğümler arasında birden fazla bağlantı olması ne işe yarayabilir?",
+    "a": "Alternatif bağlantı yollarına",
+    "options": [
+      "Alternatif bağlantı yollarına",
+      "Alan adlarının yok olmasına",
+      "Her istemciye sabit gecikme garantisine",
+      "Uygulama kodunu derlemeye"
+    ],
+    "why": "Bir bağlantı kesilirse, ağın yapısı elverdiğinde başka bir yol kullanılabilir.",
+    "ref": "Hafta04 - Kablosuz_Mesh_Mimarisi.pdf · Mesh ağın çalışma mantığı"
+  },
+  {
+    "id": "web-7",
+    "kind": "o",
+    "p": "DNS önbelleğinde kayıt yok. Recursive resolver’ın izleyeceği adımları sırala.",
+    "a": [
+      "Root DNS sunucusuna sor",
+      "TLD DNS sunucusuna sor",
+      "Authoritative DNS sunucusuna sor",
+      "Bulunan kaydı istemciye döndür"
+    ],
+    "why": "Root ve TLD sunucuları resolver’a bir sonraki aşamada hangi sunucuya başvuracağını söyler.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-8",
+    "kind": "m",
+    "p": "LAN, WAN ve WLAN kavramlarını örnekleriyle eşleştir.",
+    "a": [
+      [
+        "LAN",
+        "Sınıfın yerel ağı"
+      ],
+      [
+        "WAN",
+        "Uzak şehirler arasındaki geniş ağ"
+      ],
+      [
+        "WLAN",
+        "Kablosuz yerel ağ"
+      ]
+    ],
+    "why": "WLAN, kablosuz bağlantı kullanan bir yerel ağdır.",
+    "ref": "Hafta04-sunu01 - Network_Anatomy.pdf · PAN, LAN, WLAN, MAN ve WAN"
+  },
+  {
+    "id": "web-9",
+    "kind": "w",
+    "p": "Wi-Fi’ye bağlısın ama bir web sitesi açılmıyor. Sorunun nerede olduğunu anlamak için hangi üç noktayı kontrol edersin?",
+    "a": "Yerel ağ geçidini, alan adının DNS çözümlemesini ve hedef sunucunun bağlantısını ayrı ayrı kontrol ederim.",
+    "why": "Yerel ağ bağlantısını, DNS çözümlemesini ve hedef sunucuya erişimi ayrı ayrı kontrol et.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-10",
+    "kind": "w",
+    "p": "Öğrenci portalını açarken DNS ne yapar? Paket yönlendirme ne yapar?",
+    "a": "DNS portalın adına karşılık gelen kaydı bulur. Paketler hedef IP’ye doğru yerel ağ geçidi ve ağlar arası yönlendiriciler üzerinden taşınır.",
+    "why": "DNS’nin hangi bilgiyi bulduğunu ve router’ların paketleri nereye ilettiğini belirt.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-11",
+    "kind": "q",
+    "p": "DNS resolver’ın cache’inde geçerli bir kayıt varsa ne yapabilir?",
+    "a": "Cache’deki geçerli kaydı kullanarak cevap verebilir",
+    "options": [
+      "Cache’deki geçerli kaydı kullanarak cevap verebilir",
+      "Web sayfasının HTML dosyasını değiştirebilir",
+      "TLD kaydını silebilir",
+      "Her seferinde bütün DNS sorgularını yeniden yapması gerekir"
+    ],
+    "why": "Geçerli bir kayıt varsa DNS sunucularına yeniden başvurmadan cevap verebilir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-ek-1",
+    "kind": "q",
+    "p": "Bir uygulama çalışıyor. İşlem sırasında kullandığı geçici veriye hızlı erişmesi gerekiyor. Hangi donanım?",
+    "a": "RAM",
+    "options": [
+      "RAM",
+      "SSD",
+      "Router",
+      "Access point"
+    ],
+    "why": "RAM çalışan programın geçici verisini tutar. SSD, güç kapatıldığında da korunması gereken veriler için kullanılır.",
+    "ref": "Hafta 01.pdf · Bilgisayarın çalışma mantığı ve bileşenleri"
+  },
+  {
+    "id": "web-ek-2",
+    "kind": "q",
+    "p": "Bir öğrenci bilgisayarı kapatıp açınca kaydettiği dosya hâlâ duruyor. Hangi birim bu dosyayı kalıcı saklar?",
+    "a": "SSD",
+    "options": [
+      "SSD",
+      "RAM",
+      "CPU",
+      "Switch"
+    ],
+    "why": "SSD kalıcı depolamadır. RAM’deki geçici içerik normalde güç kesildiğinde kaybolur.",
+    "ref": "Hafta 01.pdf · Bilgisayarın çalışma mantığı ve bileşenleri"
+  },
+  {
+    "id": "web-ek-3",
+    "kind": "q",
+    "p": "Saatlik sıcaklık ölçümlerinden günlük ortalama hesaplandı. Ortalama hangi DIKW basamağına örnektir?",
+    "a": "Enformasyon",
+    "options": [
+      "Enformasyon",
+      "Ham veri",
+      "Bilgelik",
+      "Paket"
+    ],
+    "why": "Tekil ölçümler veridir. Ortalama, bunları anlamlı bir özet hâline getirir.",
+    "ref": "Hafta01 - Veri, Enformasyon, Bilgi ve Bilgelik.docx · DIKW basamakları ve örnekleri"
+  },
+  {
+    "id": "web-ek-4",
+    "kind": "q",
+    "p": "Ekip, önceki verilerde yoğunluk arttığında sunucunun yavaşladığını öğreniyor. Bu örüntüyü kullanarak sınav günü kapasite artırmaya karar veriyor. Karar hangi basamağa örnektir?",
+    "a": "Bilgelik",
+    "options": [
+      "Bilgelik",
+      "Ham veri",
+      "Enformasyon",
+      "Fiziksel katman"
+    ],
+    "why": "Bilgeliğe örnek olan kısım, öğrenilen örüntüyü bir kararda kullanmalarıdır.",
+    "ref": "Hafta01 - Veri, Enformasyon, Bilgi ve Bilgelik.docx · DIKW basamakları ve örnekleri"
+  },
+  {
+    "id": "web-ek-5",
+    "kind": "q",
+    "p": "Aynı yerel ağdaki iki kablolu bilgisayar birbiriyle haberleşiyor. Yerel Ethernet trafiğini hangi cihaz iletir?",
+    "a": "Switch",
+    "options": [
+      "Switch",
+      "TLD sunucusu",
+      "DNS resolver",
+      "Origin server"
+    ],
+    "why": "Switch, aynı yerel ağdaki Ethernet frame’lerini ilgili porta iletebilir. Farklı IP ağları arasında router gerekir.",
+    "ref": "Hafta04-sunu02 - Networking_Foundations.pdf · Yerel ağ, switch ve access point"
+  },
+  {
+    "id": "web-ek-6",
+    "kind": "q",
+    "p": "Dizüstü bilgisayar Wi-Fi’ye bağlanıyor, ardından okul ağından internete çıkıyor. İşlevlerin doğru eşleşmesi hangisi?",
+    "a": "Access point Wi-Fi bağlantısını, router ağlar arası geçişi sağlar",
+    "options": [
+      "Access point Wi-Fi bağlantısını, router ağlar arası geçişi sağlar",
+      "Router Wi-Fi bağlantısını, DNS kayıt aktarımını sağlar",
+      "Switch alan adını çözer, access point paketi internet boyunca taşır",
+      "DNS Wi-Fi bağlantısını, switch alan adı çözümünü sağlar"
+    ],
+    "why": "İlk iş, kablosuz cihazı yerel ağa bağlamaktır. İkinci iş, başka bir IP ağına giden trafiği yönlendirmektir. Ev cihazı iki rolü birlikte üstlenebilir.",
+    "ref": "Hafta04-sunu02 - Networking_Foundations.pdf · Yerel ağ, switch ve access point"
+  },
+  {
+    "id": "web-ek-7",
+    "kind": "q",
+    "p": "Bir kampüs binasındaki sınıfların bilgisayarları aynı kurum ağına bağlı. İki farklı şehirdeki kampüsler de ağla birbirine bağlanıyor. Hangi eşleştirme doğru?",
+    "a": "Bina içi LAN, şehirler arası WAN",
+    "options": [
+      "Bina içi LAN, şehirler arası WAN",
+      "Bina içi WAN, şehirler arası LAN",
+      "Her ikisi de DNS",
+      "Bina içi CDN, şehirler arası RAM"
+    ],
+    "why": "LAN sınırlı bir alanı kapsar. WAN coğrafi olarak uzak ağları birbirine bağlayabilir.",
+    "ref": "Hafta04-sunu01 - Network_Anatomy.pdf · PAN, LAN, WLAN, MAN ve WAN"
+  },
+  {
+    "id": "web-ek-8",
+    "kind": "q",
+    "p": "Mesh ağında iki düğüm arasındaki bir bağlantı kopuyor. Düğümler arasında başka bir bağlantı zinciri var. Ne olabilir?",
+    "a": "Trafik alternatif yoldan ilerleyebilir",
+    "options": [
+      "Trafik alternatif yoldan ilerleyebilir",
+      "Bütün alan adları silinir",
+      "Her cihazın IP’si zorunlu değişir",
+      "DNS sorgusu bir HTML dosyasına dönüşür"
+    ],
+    "why": "Mesh yapısındaki birden çok bağlantı, ağ uygun biçimde yapılandırılmışsa başka bir güzergâh sağlayabilir.",
+    "ref": "Hafta04 - Kablosuz_Mesh_Mimarisi.pdf · Mesh ağın çalışma mantığı"
+  },
+  {
+    "id": "web-ek-9",
+    "kind": "q",
+    "p": "Bir alan adının DNS kaydı değişiyor. Bazı kullanıcılar TTL süresi dolmadan eski IP’yi almaya devam ediyor. Neden?",
+    "a": "DNS cache eski kaydı hâlâ geçerli sayıyor olabilir",
+    "options": [
+      "DNS cache eski kaydı hâlâ geçerli sayıyor olabilir",
+      "Root sunucu HTML’i saklar",
+      "Router dosya adını yanlış hesaplıyor",
+      "Switch yeni IP’yi RAM’e yazamıyor"
+    ],
+    "why": "DNS cache kaydı TTL süresince saklayabilir. Cache’deki eski kayıt yenilenene kadar farklı kullanıcılar farklı IP görebilir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-ek-10",
+    "kind": "q",
+    "p": "DNS resolver, .com alanları için hangi sunuculara başvurabileceğini öğrenmek istiyor. Hangi katman yol gösterir?",
+    "a": "Root DNS",
+    "options": [
+      "Root DNS",
+      "Tarayıcıdaki HTML",
+      "Web sunucusu",
+      "Access point"
+    ],
+    "why": "Root DNS, .com gibi TLD’ler için ilgili sunuculara yönlendirir. Son kayıt genellikle alan adının authoritative DNS sunucusundan gelir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-ek-11",
+    "kind": "q",
+    "p": "Resolver, example.org alan adının asıl DNS kaydını hangi sunucudan alır?",
+    "a": "Authoritative DNS server",
+    "options": [
+      "Authoritative DNS server",
+      "Switch",
+      "Access point",
+      "HTML sunucusu"
+    ],
+    "why": "Authoritative DNS server, alan adının DNS kayıtları için yetkili kaynaktır. Root ve TLD çoğunlukla bir sonraki sunucuya yönlendirir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-ek-12",
+    "kind": "q",
+    "p": "Ağ çalışıyor, fakat yalnızca alan adı yazıldığında site açılmıyor. Önce hangi aşamayı kontrol edersin?",
+    "a": "DNS çözümlemesini",
+    "options": [
+      "DNS çözümlemesini",
+      "Ekran çözünürlüğünü",
+      "SSD kapasitesini",
+      "Mesh’in bütün bağlantılarını"
+    ],
+    "why": "Belirti isim çözümleme sorununa işaret edebilir. Resolver’ın alan adı için beklenen kaydı döndürüp döndürmediğine bak.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-ek-13",
+    "kind": "q",
+    "p": "Alan adının IP adresi çözüldü. Şimdi paketlerin farklı ağlar arasında doğru hedefe gitmesini kim sağlar?",
+    "a": "Router’lar",
+    "options": [
+      "Router’lar",
+      "Root DNS sunucuları",
+      "HTML dosyası",
+      "SSD"
+    ],
+    "why": "DNS hedef adresini bulmaya yardım eder. Router’lar bu adrese giden paketleri ağlar arasında iletir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-ek-14",
+    "kind": "q",
+    "p": "Tarayıcı example.org için IP adresini biliyor. Sunucudan /ders içeriğini hangi aşamada ister?",
+    "a": "HTTP isteğinde",
+    "options": [
+      "HTTP isteğinde",
+      "Root DNS sorgusunda",
+      "Switch öğrenme aşamasında",
+      "DNS TTL kontrolünde"
+    ],
+    "why": "URL’nin path bölümü HTTP isteğinde web sunucusuna gider. DNS, alan adıyla ilgilenir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  },
+  {
+    "id": "web-ek-15",
+    "kind": "q",
+    "p": "Bir portalın alan adı doğru IP’ye çözülüyor ama HTTP isteği zaman aşımına uğruyor. Bu bilgi sana ne söyler?",
+    "a": "İsim çözümlemesi başarılı, hedefe bağlantı ayrıca incelenmeli",
+    "options": [
+      "İsim çözümlemesi başarılı, hedefe bağlantı ayrıca incelenmeli",
+      "DNS’nin kesinlikle bozuk olduğunu",
+      "Ekran kartı sorununu",
+      "Root DNS’in HTML gönderdiğini"
+    ],
+    "why": "IP’nin bulunması DNS aşamasının çalıştığını gösterir. Ağ yolu, güvenlik duvarı veya hedef sunucu ayrı ayrı kontrol edilebilir.",
+    "ref": "Hafta05 - Inside_the_Click.pdf · DNS hiyerarşisi, cache ve paket yönlendirme"
+  }
+];
+
+const etik = [
+  {
+    "id": "etik-1",
+    "kind": "q",
+    "p": "Satın alma yöneticisine tedarikçiden pahalı bir hediye geliyor. Hediyeyi kabul etmek yasal, ama tarafsızlığı etkileyebilir. Bu durum hangi kavrama örnektir?",
+    "a": "Ahlâki ikilem",
+    "options": [
+      "Ahlâki ikilem",
+      "Dağıtıcı adalet",
+      "Ahlâki özerklik",
+      "Rol alma"
+    ],
+    "why": "Vaka, bir davranışın yasal olmasıyla etik açıdan nasıl değerlendirildiğinin ayrı konular olduğunu gösterir."
+  },
+  {
+    "id": "etik-2",
+    "kind": "q",
+    "p": "Ders sunusuna göre etik ve ahlâk arasındaki ilişkiyi hangi ifade açıklar?",
+    "a": "Etik, ahlâki değerleri ve davranışları inceler",
+    "options": [
+      "Etik, ahlâki değerleri ve davranışları inceler",
+      "Etik yalnızca ceza yasalarını inceler",
+      "Ahlâk yalnızca şirket kurallarını kapsar",
+      "İkisi de yalnızca doğuştan gelen davranışları inceler"
+    ],
+    "why": "Etik, ahlâki değerleri ve davranışları felsefi açıdan inceler."
+  },
+  {
+    "id": "etik-3",
+    "kind": "q",
+    "p": "Bir kararın doğruluğunu sağladığı toplam faydaya göre değerlendiren yaklaşım hangisidir?",
+    "a": "Faydacılık",
+    "options": [
+      "Faydacılık",
+      "Ödev etiği",
+      "Erdem etiği",
+      "Psikanalitik kuram"
+    ],
+    "why": "Faydacılık, seçenekleri ortaya çıkardıkları sonuçlara göre değerlendirir."
+  },
+  {
+    "id": "etik-4",
+    "kind": "q",
+    "p": "Aristoteles’e göre korkaklık ile gözü karalık arasındaki erdem hangisidir?",
+    "a": "Cesaret",
+    "options": [
+      "Cesaret",
+      "Cömertlik",
+      "Dalkavukluk",
+      "Cimrilik"
+    ],
+    "why": "Cesaret, bu örnekte eksiklik ile aşırılık arasındaki orta yoldur."
+  },
+  {
+    "id": "etik-5",
+    "kind": "q",
+    "p": "Bir kurumun çalışanları arasında prim paylaştırması hangi adalet türüne örnektir?",
+    "a": "Dağıtıcı adalet",
+    "options": [
+      "Dağıtıcı adalet",
+      "Düzeltici adalet",
+      "Ödev etiği",
+      "Araçsal ilişki"
+    ],
+    "why": "Dağıtıcı adalet, kaynakların veya yüklerin kişiler arasında nasıl paylaştırıldığıyla ilgilenir."
+  },
+  {
+    "id": "etik-6",
+    "kind": "q",
+    "p": "“Beni iyi bir arkadaş olarak görsünler diye yardım ederim.” Kohlberg’e göre bu gerekçe hangi evreye girer?",
+    "a": "Kişiler arası uyum",
+    "options": [
+      "Kişiler arası uyum",
+      "Kanun ve düzen",
+      "Ceza ve itaat",
+      "Sosyal sözleşme"
+    ],
+    "why": "Kişi yakın çevresinin onayını kazanmayı amaçlıyor."
+  },
+  {
+    "id": "etik-7",
+    "kind": "q",
+    "p": "“Herkes kuralları çiğnerse toplum düzeni bozulur.” Kohlberg’e göre bu gerekçe hangi evreye girer?",
+    "a": "Kanun ve düzen",
+    "options": [
+      "Kanun ve düzen",
+      "Araçsal ilişkiler",
+      "Kişiler arası uyum",
+      "Ceza ve itaat"
+    ],
+    "why": "Kişi kurala toplumsal düzeni korumak için uyuyor."
+  },
+  {
+    "id": "etik-8",
+    "kind": "q",
+    "p": "“Ceza almamak için kurala uyarım.” Kohlberg’e göre bu gerekçe hangi evreye girer?",
+    "a": "Ceza ve itaat",
+    "options": [
+      "Ceza ve itaat",
+      "Sosyal sözleşme",
+      "Evrensel ilkeler",
+      "Kişiler arası uyum"
+    ],
+    "why": "Ceza ve itaat evresinde kişi cezadan kaçınmak için kurala uyar."
+  },
+  {
+    "id": "etik-9",
+    "kind": "q",
+    "p": "Kohlberg’in kuramında bakım ve insan ilişkilerinin yeterince dikkate alınmadığını kim savunur?",
+    "a": "Gilligan",
+    "options": [
+      "Gilligan",
+      "Piaget",
+      "Freud",
+      "Locke"
+    ],
+    "why": "Carol Gilligan, ahlâki yargıların adalet kadar bakım ve ilişkilerle de ilgili olduğunu vurgular."
+  },
+  {
+    "id": "etik-10",
+    "kind": "q",
+    "p": "“Terfi etmek istiyorsan dürüst davran.” Kant’a göre bu hangi tür buyruktur?",
+    "a": "Hipotetik buyruk",
+    "options": [
+      "Hipotetik buyruk",
+      "Kategorik buyruk",
+      "Evrensel ilke",
+      "Özerk yasa"
+    ],
+    "why": "Buyruk bir koşula bağlıdır. Kişi terfi etmek istiyorsa dürüst davranması isteniyor."
+  },
+  {
+    "id": "etik-11",
+    "kind": "q",
+    "p": "İki bakkal da müşteriye doğru para üstünü veriyor. Kant’a göre hangi gerekçe ödevden dolayı davranmaya örnektir?",
+    "a": "Doğru olduğu için doğru para üstünü vermek",
+    "options": [
+      "Doğru olduğu için doğru para üstünü vermek",
+      "Müşteri kaybetmemek",
+      "İzleniyor olmak",
+      "Daha çok kâr etmek"
+    ],
+    "why": "Kant, eylemin ahlâki değerini değerlendirirken kişinin hangi gerekçeyle hareket ettiğine bakar."
+  },
+  {
+    "id": "etik-12",
+    "kind": "q",
+    "p": "Kant’a göre bir kişi sırf cezadan korktuğu için kurala uyuyorsa iradesi hangi durumdadır?",
+    "a": "Heteronomi",
+    "options": [
+      "Heteronomi",
+      "Otonomi",
+      "Orta yol",
+      "Dağıtıcı adalet"
+    ],
+    "why": "Heteronomide iradeyi dışarıdan gelen bir etken yönlendirir. Bu örnekte etken ceza korkusudur."
+  },
+  {
+    "id": "etik-13",
+    "kind": "q",
+    "p": "Sartre’ın özgürlük anlayışını hangi ifade yansıtır?",
+    "a": "Seçmemeyi seçmek de bir seçimdir",
+    "options": [
+      "Seçmemeyi seçmek de bir seçimdir",
+      "Erdem aritmetik ortadır",
+      "İyi davranışı yalnız ceza öğretir",
+      "Tek ölçüt toplam faydadır"
+    ],
+    "why": "Sartre’a göre insan seçimlerinin sorumluluğunu taşır. Seçimden kaçınmak da bir seçimdir."
+  },
+  {
+    "id": "etik-14",
+    "kind": "q",
+    "p": "Etiğin Çağları sunusunda İlkçağ etiğinin temel amacı nasıl anlatılır?",
+    "a": "Erdemli yaşam ve mutluluk",
+    "options": [
+      "Erdemli yaşam ve mutluluk",
+      "Sadece teolojik otorite",
+      "Yalnız şirket kârı",
+      "Yalnız modern faydacılık"
+    ],
+    "why": "Sunu, İlkçağ etiğini iyi ve erdemli bir yaşam sürme amacıyla ilişkilendirir."
+  }
+];
+
+const guvenlik = [
+  {
+    "id": "guvenlik-1",
+    "kind": "q",
+    "p": "Bir DDoS saldırısı yüzünden kullanıcılar siteye ulaşamıyor. CIA üçlüsünün hangi ilkesi doğrudan etkilenir?",
+    "a": "Erişilebilirlik",
+    "options": [
+      "Erişilebilirlik",
+      "Gizlilik",
+      "Bütünlük",
+      "İnkâr edememe"
+    ],
+    "why": "DDoS, hizmete erişimi aksattığı için erişilebilirliği (availability) etkiler.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-2",
+    "kind": "q",
+    "p": "Saldırgan, başka bir siteden sızmış kullanıcı adı ve parola çiftleriyle oturum açmayı deniyor. Bu saldırının adı nedir?",
+    "a": "Credential stuffing",
+    "options": [
+      "Credential stuffing",
+      "Brute force",
+      "XSS",
+      "Pasif tarama"
+    ],
+    "why": "Credential stuffing’de daha önce sızmış kullanıcı adı ve parola çiftleri yeniden denenir.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-3",
+    "kind": "q",
+    "p": "Bir öğrenci oturum açtıktan sonra URL’deki öğrenci numarasını değiştirerek başka bir öğrencinin kaydını görüyor. Bu hangi OWASP kategorisine girer?",
+    "a": "Broken Access Control (erişim kontrolü hatası)",
+    "options": [
+      "Broken Access Control (erişim kontrolü hatası)",
+      "Authentication Failures (kimlik doğrulama hataları)",
+      "Cryptographic Failures (kriptografik hatalar)",
+      "Security Misconfiguration (güvenlik yapılandırma hatası)"
+    ],
+    "why": "Sunucu, giriş yapan kullanıcının o kaydı görmeye yetkili olup olmadığını da kontrol etmelidir.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-4",
+    "kind": "q",
+    "p": "Saldırganın sayfaya yerleştirdiği JavaScript, ziyaretçinin tarayıcısında çalışıyor. Bu hangi saldırı türüdür?",
+    "a": "XSS",
+    "options": [
+      "XSS",
+      "CSRF",
+      "SSRF",
+      "DDoS"
+    ],
+    "why": "XSS’de saldırganın eklediği kod ziyaretçinin tarayıcısında çalışır.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 16–23, ZAP ve tarama özellikleri"
+  },
+  {
+    "id": "guvenlik-5",
+    "kind": "q",
+    "p": "Kullanıcı bir sitede oturum açmışken başka bir sayfa, onun haberi olmadan bu oturum üzerinden işlem yaptırıyor. Bu hangi saldırı türüdür?",
+    "a": "CSRF",
+    "options": [
+      "CSRF",
+      "SSRF",
+      "DDoS",
+      "MITM"
+    ],
+    "why": "CSRF, kullanıcının mevcut oturumundan yararlanarak onun istemediği bir istek gönderir.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 16–23, ZAP ve tarama özellikleri"
+  },
+  {
+    "id": "guvenlik-6",
+    "kind": "q",
+    "p": "Saldırgan, web uygulamasına verdiği URL üzerinden sunucunun iç ağdaki bir adrese istek göndermesini sağlıyor. Bu hangi saldırı türüdür?",
+    "a": "SSRF",
+    "options": [
+      "SSRF",
+      "XSS",
+      "CSRF",
+      "Credential stuffing"
+    ],
+    "why": "SSRF’de saldırganın yönlendirdiği isteği web uygulamasının sunucusu gönderir.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-7",
+    "kind": "q",
+    "p": "Derste kullanılan OWASP Top 10 2021 listesinde A10 hangi risktir?",
+    "a": "SSRF",
+    "options": [
+      "SSRF",
+      "Injection",
+      "Broken Access Control",
+      "Security Misconfiguration"
+    ],
+    "why": "SSRF, 2021 listesindeki A10 kategorisidir.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-8",
+    "kind": "q",
+    "p": "ZAP, geçen HTTP trafiğini inceliyor ve hedefe kendi test isteğini göndermiyor. Hangi tarama türü kullanılıyor?",
+    "a": "Passive Scan (pasif tarama)",
+    "options": [
+      "Passive Scan (pasif tarama)",
+      "Active Scan (aktif tarama)",
+      "Fuzzer",
+      "Anahtar değişimi"
+    ],
+    "why": "Passive Scan (pasif tarama), mevcut HTTP isteklerini ve cevaplarını inceler.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 16–23, ZAP ve tarama özellikleri"
+  },
+  {
+    "id": "guvenlik-9",
+    "kind": "q",
+    "p": "ZAP’ta bağlantıları izleyerek uygulamanın sayfalarını keşfeden araç hangisidir?",
+    "a": "Spider",
+    "options": [
+      "Spider",
+      "AES",
+      "Pasif tarama",
+      "Dijital imza"
+    ],
+    "why": "Spider, bağlantıları izleyerek taranabilecek sayfaları ve adresleri bulur.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 16–23, ZAP ve tarama özellikleri"
+  },
+  {
+    "id": "guvenlik-10",
+    "kind": "q",
+    "p": "AES-256’da bir blok kaç bittir?",
+    "a": "128",
+    "options": [
+      "128",
+      "256",
+      "64",
+      "192"
+    ],
+    "why": "AES-256’daki 256, anahtarın uzunluğudur. AES’in blok boyutu 128 bittir.",
+    "ref": "Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 3–17 (AES), s. 18–44 (RSA)"
+  },
+  {
+    "id": "guvenlik-11",
+    "kind": "q",
+    "p": "Diffie–Hellman (DH) hangi amaçla kullanılır?",
+    "a": "Ortak anahtar üzerinde anlaşma",
+    "options": [
+      "Ortak anahtar üzerinde anlaşma",
+      "Web sayfasını tarama",
+      "Parolayı hash etme",
+      "Veriyi doğrudan şifreleme"
+    ],
+    "why": "DH, iki tarafın ortak bir anahtar üzerinde anlaşmasını sağlar.",
+    "ref": "Web Güvenliği-03-Şifreleme.pdf · s. 4–38, kriptografi ve algoritmalar"
+  },
+  {
+    "id": "guvenlik-12",
+    "kind": "q",
+    "p": "RSA ile oluşturulan dijital imzayı doğrulamak için hangi anahtar kullanılır?",
+    "a": "İmzalayanın public key’i",
+    "options": [
+      "İmzalayanın public key’i",
+      "Alıcının private key’i",
+      "AES anahtarı",
+      "İmzalayanın private key’i"
+    ],
+    "why": "İmzayı gönderen kendi private key’iyle imzalar. Doğrulayan taraf, imzalayanın public key’ini kullanır.",
+    "ref": "Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 3–17 (AES), s. 18–44 (RSA)"
+  },
+  {
+    "id": "guvenlik-13",
+    "kind": "q",
+    "p": "RSA örneğinde p = 5 ve q = 7 ise φ(n) kaçtır?",
+    "a": "24",
+    "options": [
+      "24",
+      "35",
+      "12",
+      "6"
+    ],
+    "why": "φ(n) = (p − 1) × (q − 1). Bu örnekte 4 × 6 = 24.",
+    "ref": "Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 3–17 (AES), s. 18–44 (RSA)"
+  },
+  {
+    "id": "guvenlik-14",
+    "kind": "q",
+    "p": "Kullanıcının girdisi SQL sorgusunun bir parçası olarak çalıştırılıyor. Bu açığın adı nedir?",
+    "a": "SQL injection",
+    "options": [
+      "SQL injection",
+      "DDoS",
+      "Phishing",
+      "SSRF"
+    ],
+    "why": "Parametreli sorgular, kullanıcı girdisini SQL komutu olarak yorumlamak yerine veri olarak işler.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-1",
+    "kind": "q",
+    "p": "Saldırgan verileri okumadan bir müşterinin hesap bakiyesini değiştiriyor. CIA üçlüsünde hangi ilke doğrudan ihlal ediliyor?",
+    "a": "Integrity (bütünlük)",
+    "options": [
+      "Integrity (bütünlük)",
+      "Confidentiality (gizlilik)",
+      "Availability (erişilebilirlik)",
+      "MFA"
+    ],
+    "why": "Veri yetkisiz biçimde değiştirildiği için bütünlüğü bozuldu.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-2",
+    "kind": "q",
+    "p": "Bir arşiv yetkisiz kişilerce okunuyor. Dosyalar değişmiyor ve hizmet çalışıyor. Hangi ilke ihlal edildi?",
+    "a": "Confidentiality (gizlilik)",
+    "options": [
+      "Confidentiality (gizlilik)",
+      "Integrity (bütünlük)",
+      "Availability (erişilebilirlik)",
+      "Logging"
+    ],
+    "why": "Dosyalar yetkisiz kişilerce okundu. Bu, gizlilik ihlalidir.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-3",
+    "kind": "q",
+    "p": "Saldırgan, üniversite giriş ekranına benzeyen bir siteye yönlendirip parolanı istiyor. Hangi yöntem?",
+    "a": "Phishing",
+    "options": [
+      "Phishing",
+      "Brute force",
+      "SSRF",
+      "Encryption at rest"
+    ],
+    "why": "Saldırgan kullanıcıyı kandırarak bilgiyi kendisine vermesini sağlıyor.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-4",
+    "kind": "q",
+    "p": "E-posta özellikle bir çalışanın adı, işi ve güncel projesi kullanılarak hazırlanmış. Hangi yöntem?",
+    "a": "Spear phishing",
+    "options": [
+      "Spear phishing",
+      "DDoS",
+      "Worm",
+      "Directory traversal"
+    ],
+    "why": "Spear phishing, belirli kişi veya kuruma göre kişiselleştirilmiş oltalamadır.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-5",
+    "kind": "q",
+    "p": "Zararlı yazılım ağ üzerinden kendi kendine başka makinelere yayılıyor. Hangisi?",
+    "a": "Worm (solucan)",
+    "options": [
+      "Worm (solucan)",
+      "Trojan",
+      "Keylogger",
+      "Fuzzer"
+    ],
+    "why": "Solucan kendi kendine çoğalıp ağ üzerinden yayılabilir.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-6",
+    "kind": "q",
+    "p": "Kullanışlı bir uygulama gibi görünen yazılım kurulduktan sonra zararlı işlem yapıyor. Hangisi?",
+    "a": "Trojan (Truva atı)",
+    "options": [
+      "Trojan (Truva atı)",
+      "Worm (solucan)",
+      "DDoS",
+      "MITM"
+    ],
+    "why": "Truva atı, meşru bir program görünümüne bürünerek kullanıcının onu çalıştırmasını sağlar.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-7",
+    "kind": "q",
+    "p": "Bir zararlı yazılım dosyaları kilitleyip açmak için para istiyor. Hangisi?",
+    "a": "Ransomware",
+    "options": [
+      "Ransomware",
+      "Rootkit",
+      "Spider",
+      "SQL Injection"
+    ],
+    "why": "Dosyaların kullanılmasını engelleme ve fidye isteme bu senaryonun ayırt edici özellikleridir.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-8",
+    "kind": "q",
+    "p": "Saldırgan iki taraf arasındaki trafiği araya girerek okuyor ve değiştirebiliyor. Hangisi?",
+    "a": "Man-in-the-Middle (MITM)",
+    "options": [
+      "Man-in-the-Middle (MITM)",
+      "Credential stuffing",
+      "DDoS",
+      "Fuzzing"
+    ],
+    "why": "Saldırgan iletişim kanalına müdahale ediyor. Giriş bilgilerini tahmin etmiyor.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-9",
+    "kind": "q",
+    "p": "Saldırgan aynı hesaba çok sayıda olası parola deniyor. Sızmış parola çiftleri kullanmıyor. Hangi yöntem?",
+    "a": "Brute force",
+    "options": [
+      "Brute force",
+      "Credential stuffing",
+      "SSRF",
+      "Zero-day"
+    ],
+    "why": "Brute force çok sayıda tahmin dener. Credential stuffing önceden sızmış kimlik bilgilerini yeniden kullanır.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-10",
+    "kind": "q",
+    "p": "Ele geçirilmiş binlerce cihaz tek merkezden yönetiliyor. Bu cihaz topluluğunun adı nedir?",
+    "a": "Botnet",
+    "options": [
+      "Botnet",
+      "Rootkit",
+      "DDoS",
+      "Proxy"
+    ],
+    "why": "Botnet, kontrol edilen cihaz ağıdır. Bu ağın gerçekleştirebileceği saldırılardan biri DDoS’tur.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-11",
+    "kind": "q",
+    "p": "Henüz bilinen bir düzeltmesi bulunmayan, daha önce bilinmeyen bir açık saldırıda kullanılıyor. Hangi terim?",
+    "a": "Zero-day",
+    "options": [
+      "Zero-day",
+      "Phishing",
+      "Security Logging Failure",
+      "Active Scan"
+    ],
+    "why": "Zero-day örneğinde açık henüz bilinmiyor veya açığa karşı düzeltme hazır değil.",
+    "ref": "Web Güvenliği-01_Siber Güvenlik.pdf · s. 5–25, CIA ve siber tehditler"
+  },
+  {
+    "id": "guvenlik-ek-12",
+    "kind": "q",
+    "p": "Üretim sunucusunda debug modu açık ve hata mesajı iç yapılandırmayı gösteriyor. OWASP 2021 kategorisi?",
+    "a": "Security Misconfiguration",
+    "options": [
+      "Security Misconfiguration",
+      "Insecure Design",
+      "Software and Data Integrity Failures",
+      "SSRF"
+    ],
+    "why": "Sorun mevcut bir ayarın üretimde yanlış bırakılmasıdır.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-13",
+    "kind": "q",
+    "p": "Uygulama, bilinen açığı olan eski kütüphane sürümünü kullanıyor. OWASP 2021 kategorisi?",
+    "a": "Vulnerable and Outdated Components",
+    "options": [
+      "Vulnerable and Outdated Components",
+      "Cryptographic Failures",
+      "Broken Access Control",
+      "Insecure Design"
+    ],
+    "why": "Açık, kullanılan bileşenin eski veya zafiyetli sürümünden geliyor.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-14",
+    "kind": "q",
+    "p": "Ekip sistem tasarlanırken kritik bir iş akışında gerekli güvenlik kontrolünü hiç planlamamış. OWASP 2021 kategorisi?",
+    "a": "Insecure Design",
+    "options": [
+      "Insecure Design",
+      "Security Misconfiguration",
+      "SSRF",
+      "Directory Traversal"
+    ],
+    "why": "Kontrol tasarımda eksik. Mevcut bir kontrolün yanlış ayarlanması farklı bir sorundur.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-15",
+    "kind": "q",
+    "p": "Giriş sayfası sınırsız parola denemesine izin veriyor. OWASP 2021 kategorisi?",
+    "a": "Identification and Authentication Failures",
+    "options": [
+      "Identification and Authentication Failures",
+      "Broken Access Control",
+      "Cryptographic Failures",
+      "SSRF"
+    ],
+    "why": "Sorun kimlik doğrulama akışındaki yetersiz koruma. Başkasının kaydına erişmek ise yetkilendirme hatası olurdu.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-16",
+    "kind": "q",
+    "p": "Başarısız oturum açma olayları kaydedilmediği için saldırı fark edilmiyor. OWASP 2021 kategorisi?",
+    "a": "Security Logging and Monitoring Failures",
+    "options": [
+      "Security Logging and Monitoring Failures",
+      "Injection",
+      "Broken Access Control",
+      "Cryptographic Failures"
+    ],
+    "why": "Olay kaydı ve izleme eksikliği tespiti engelliyor.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-17",
+    "kind": "q",
+    "p": "Uygulama güncelleme paketini kaynağını ve imzasını doğrulamadan çalıştırıyor. OWASP 2021 kategorisi?",
+    "a": "Software and Data Integrity Failures",
+    "options": [
+      "Software and Data Integrity Failures",
+      "SSRF",
+      "Security Logging and Monitoring Failures",
+      "Broken Access Control"
+    ],
+    "why": "Güncellemenin güvenilir ve değiştirilmemiş olduğu doğrulanmıyor.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-18",
+    "kind": "q",
+    "p": "Hassas veriler ağda şifrelenmeden taşınıyor. OWASP 2021 kategorisi?",
+    "a": "Cryptographic Failures",
+    "options": [
+      "Cryptographic Failures",
+      "Injection",
+      "Security Logging and Monitoring Failures",
+      "Insecure Design"
+    ],
+    "why": "İletişim sırasında veriyi koruyacak kriptografik kontrol eksik.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 4–14, OWASP Top 10:2021"
+  },
+  {
+    "id": "guvenlik-ek-19",
+    "kind": "q",
+    "p": "ZAP, açık aramak için hedefe kendi test isteklerini gönderiyor. Bu hangi taramadır?",
+    "a": "Active Scan (aktif tarama)",
+    "options": [
+      "Active Scan (aktif tarama)",
+      "Passive Scan (pasif tarama)",
+      "Spider",
+      "Logging"
+    ],
+    "why": "Active Scan hedefe zafiyetleri sınayan istekler gönderir. Passive Scan mevcut trafiği inceler.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 16–23, ZAP ve tarama özellikleri"
+  },
+  {
+    "id": "guvenlik-ek-20",
+    "kind": "q",
+    "p": "Bir form parametresine çok sayıda farklı girdi gönderip uygulamanın tepkisini gözlemlemek istiyorsun. ZAP özelliği?",
+    "a": "Fuzzer",
+    "options": [
+      "Fuzzer",
+      "Spider",
+      "Passive Scan",
+      "MFA"
+    ],
+    "why": "Fuzzer girdileri değiştirip cevapları karşılaştırır. Spider’ın ana görevi sayfa keşfidir.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 16–23, ZAP ve tarama özellikleri"
+  },
+  {
+    "id": "guvenlik-ek-21",
+    "kind": "q",
+    "p": "Bir dosya isteğindeki yol değiştirilince uygulamanın izin verdiği klasörün dışından dosya okunuyor. Açığın adı nedir?",
+    "a": "Directory Traversal",
+    "options": [
+      "Directory Traversal",
+      "CSRF",
+      "DDoS",
+      "Phishing"
+    ],
+    "why": "Girdi dosya yolu olarak kullanılıyor ve uygulama erişimi izinli klasörle sınırlamıyor.",
+    "ref": "Web Güvenliği-02_OWASP.pdf · s. 16–23, ZAP ve tarama özellikleri"
+  },
+  {
+    "id": "guvenlik-ek-22",
+    "kind": "q",
+    "p": "Aynı gizli anahtar hem veriyi şifreliyor hem de geri açıyor. Hangi yöntem?",
+    "a": "Simetrik şifreleme",
+    "options": [
+      "Simetrik şifreleme",
+      "Asimetrik şifreleme",
+      "Hashing",
+      "Dijital imza"
+    ],
+    "why": "Simetrik yöntemde iki işlem aynı gizli anahtara dayanır.",
+    "ref": "Web Güvenliği-03-Şifreleme.pdf · s. 4–38, kriptografi ve algoritmalar"
+  },
+  {
+    "id": "guvenlik-ek-23",
+    "kind": "q",
+    "p": "Bir dosyanın değişip değişmediğini doğrulamak için dosyadan sabit uzunlukta özet üretiyorsun. Hangi yöntem?",
+    "a": "Hash fonksiyonu",
+    "options": [
+      "Hash fonksiyonu",
+      "Şifre çözme",
+      "Diffie–Hellman",
+      "Spider"
+    ],
+    "why": "Hash dosyanın özetini üretir. Özet karşılaştırması değişikliği tespit etmek için kullanılabilir.",
+    "ref": "Web Güvenliği-03-Şifreleme.pdf · s. 4–38, kriptografi ve algoritmalar"
+  },
+  {
+    "id": "guvenlik-ek-24",
+    "kind": "q",
+    "p": "DES için blok ve etkin anahtar uzunluğu hangisidir?",
+    "a": "64 bit blok ve 56 bit anahtar",
+    "options": [
+      "64 bit blok ve 56 bit anahtar",
+      "56 bit blok ve 64 bit anahtar",
+      "128 bit blok ve 256 bit anahtar",
+      "64 bit blok ve 128 bit anahtar"
+    ],
+    "why": "DES’te iki uzunluk farklıdır. Etkin anahtar 56 bittir.",
+    "ref": "Web Güvenliği-03-Şifreleme.pdf · s. 4–38, kriptografi ve algoritmalar"
+  },
+  {
+    "id": "guvenlik-ek-25",
+    "kind": "q",
+    "p": "Ders tablosunda hangisi bir stream cipher (akış şifresi) olarak geçer?",
+    "a": "RC4",
+    "options": [
+      "RC4",
+      "AES",
+      "DES",
+      "RSA"
+    ],
+    "why": "RC4 bir akış şifresidir. AES ve DES blok şifresidir.",
+    "ref": "Web Güvenliği-03-Şifreleme.pdf · s. 4–38, kriptografi ve algoritmalar"
+  },
+  {
+    "id": "guvenlik-ek-26",
+    "kind": "q",
+    "p": "Ders sunusunda yalnızca dijital imza amacıyla verilen algoritma hangisidir?",
+    "a": "DSA",
+    "options": [
+      "DSA",
+      "AES",
+      "Diffie–Hellman",
+      "DES"
+    ],
+    "why": "DSA’nın amacı dijital imzadır. Diffie–Hellman anahtar anlaşması içindir.",
+    "ref": "Web Güvenliği-03-Şifreleme.pdf · s. 4–38, kriptografi ve algoritmalar"
+  },
+  {
+    "id": "guvenlik-ek-27",
+    "kind": "q",
+    "p": "AES’te state satırlarını kaydıran adım hangisidir?",
+    "a": "ShiftRows",
+    "options": [
+      "ShiftRows",
+      "SubBytes",
+      "MixColumns",
+      "AddRoundKey"
+    ],
+    "why": "ShiftRows satırları kaydırır. MixColumns sütunları karıştırır.",
+    "ref": "Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 3–17 (AES), s. 18–44 (RSA)"
+  },
+  {
+    "id": "guvenlik-ek-28",
+    "kind": "q",
+    "p": "AES’te round key ile state’i XOR’layan adım hangisidir?",
+    "a": "AddRoundKey",
+    "options": [
+      "AddRoundKey",
+      "ShiftRows",
+      "SubBytes",
+      "MixColumns"
+    ],
+    "why": "AddRoundKey adımında state ile turun anahtarı XOR işlemine girer.",
+    "ref": "Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 3–17 (AES), s. 18–44 (RSA)"
+  },
+  {
+    "id": "guvenlik-ek-29",
+    "kind": "q",
+    "p": "RSA örneğinde φ(n) = 24 ve e = 5 ise d hangisi olabilir?",
+    "a": "5",
+    "options": [
+      "5",
+      "4",
+      "6",
+      "10"
+    ],
+    "why": "e × d mod φ(n) = 1 olmalı. 5 × 5 = 25 ve 25 mod 24 = 1.",
+    "ref": "Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 3–17 (AES), s. 18–44 (RSA)"
+  },
+  {
+    "id": "guvenlik-ek-30",
+    "kind": "q",
+    "p": "Ali, Ayşe’ye RSA ile yalnızca Ayşe’nin açabileceği bir mesaj gönderecek. Hangi anahtarla şifreler?",
+    "a": "Ayşe’nin public key’i",
+    "options": [
+      "Ayşe’nin public key’i",
+      "Ali’nin public key’i",
+      "Ali’nin private key’i",
+      "Ayşe’nin private key’i"
+    ],
+    "why": "Ayşe’nin public key’iyle şifrelenen mesajı, karşılık gelen private key’i elinde tutan Ayşe açabilir.",
+    "ref": "Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 3–17 (AES), s. 18–44 (RSA)"
+  }
+];
+
+const ibe = [
+  {
+    "id": "ibe-1",
+    "kind": "q",
+    "p": "Bir kullanıcıya “Bu adımda neyi anlamakta zorlandınız?” diye sormak hangi tür veri sağlar?",
+    "a": "Nitel veri",
+    "options": [
+      "Nitel veri",
+      "Sunucu metriği",
+      "Şifreli veri",
+      "Ağ gecikmesi"
+    ],
+    "why": "Kullanıcının kendi sözleri, yaşadığı sorunun nedenini anlamaya yarayan nitel veri sağlar."
+  },
+  {
+    "id": "ibe-2",
+    "kind": "q",
+    "p": "Kullanıcının görevini doğru ve eksiksiz tamamlaması, kullanılabilirliğin hangi boyutuyla ilgilidir?",
+    "a": "Etkililik",
+    "options": [
+      "Etkililik",
+      "Verimlilik",
+      "Memnuniyet",
+      "Erişim kontrolü"
+    ],
+    "why": "Görevi tamamlayabilme oranı, etkililiği ölçmek için kullanılabilir."
+  },
+  {
+    "id": "ibe-3",
+    "kind": "q",
+    "p": "Bir görevin ne kadar zaman ve çaba gerektirdiğini ölçmek, kullanılabilirliğin hangi boyutuyla ilgilidir?",
+    "a": "Verimlilik",
+    "options": [
+      "Verimlilik",
+      "Etkililik",
+      "Memnuniyet",
+      "Estetik"
+    ],
+    "why": "Verimlilik, kullanıcı hedefe ulaşırken harcadığı zaman ve çabayla ilgilidir."
+  },
+  {
+    "id": "ibe-4",
+    "kind": "q",
+    "p": "Hangisi kullanıcının sistemin ne yaptığını anlamasına yardımcı olur?",
+    "a": "Dosya yüklemede ilerleme göstergesi",
+    "options": [
+      "Dosya yüklemede ilerleme göstergesi",
+      "Yüklemenin görünmez olması",
+      "Aynı butonu iki kez göstermek",
+      "Tüm uyarıları silmek"
+    ],
+    "why": "İlerleme göstergesi, dosyanın yüklenmekte olduğunu ve işlemin ne kadarının tamamlandığını gösterir."
+  },
+  {
+    "id": "ibe-5",
+    "kind": "q",
+    "p": "Bir dosyanın yanlışlıkla silinmesi riskini hangi tasarım kararı azaltır?",
+    "a": "Silme öncesi açık onay ve geri alma olanağı",
+    "options": [
+      "Silme öncesi açık onay ve geri alma olanağı",
+      "Silme düğmesini her yerde çoğaltmak",
+      "Sadece teknik hata kodu vermek",
+      "Sonucu gizlemek"
+    ],
+    "why": "Onay adımı yanlışlıkla silmeyi önlemeye, geri alma seçeneği ise hata sonrası dosyayı kurtarmaya yardımcı olur."
+  },
+  {
+    "id": "ibe-6",
+    "kind": "q",
+    "p": "Aşağıdakilerden hangisi kullanıcı merkezli tasarıma örnektir?",
+    "a": "Gerçek kullanıcılarla prototipi değerlendirip yinelemek",
+    "options": [
+      "Gerçek kullanıcılarla prototipi değerlendirip yinelemek",
+      "Tasarımı bir kez hazırlayıp sabitlemek",
+      "Yalnız geliştirici görüşü almak",
+      "Bağlamı baştan yok saymak"
+    ],
+    "why": "Prototipi kullanıcılarla deneyip gözlemlere göre değiştirmek, tasarım sürecinin tekrar eden bir parçasıdır."
+  },
+  {
+    "id": "ibe-7",
+    "kind": "o",
+    "p": "Kullanıcı merkezli tasarımın bir turundaki adımları sırala.",
+    "a": [
+      "Kullanım bağlamını anla",
+      "Kullanıcı gereksinimlerini belirle",
+      "Tasarım çözümü üret",
+      "Kullanıcılarla değerlendir"
+    ],
+    "why": "Kullanıcı değerlendirmesinden çıkan bulgularla sonraki tasarım turuna geçilir."
+  },
+  {
+    "id": "ibe-8",
+    "kind": "m",
+    "p": "Her kullanılabilirlik boyutunu, onu ölçmek için kullanabileceğin örnekle eşleştir.",
+    "a": [
+      [
+        "Etkililik",
+        "Görevi tamamlayan kullanıcı oranı"
+      ],
+      [
+        "Verimlilik",
+        "Başarılı görev başına harcanan zaman"
+      ],
+      [
+        "Memnuniyet",
+        "Görev sonrası kullanıcı değerlendirmesi"
+      ]
+    ],
+    "why": "Bir ders kaydı görevi için başarı oranı, tamamlanma süresi ve görev sonrası memnuniyet ayrı ayrı ölçülebilir."
+  },
+  {
+    "id": "ibe-9",
+    "kind": "w",
+    "p": "Öğrenciler ders kayıt ekranında son adımda takılıyor. Sorunu anlamak için yönlendirmeyen bir soru yaz. Sonra bir tasarım değişikliği ve başarısını nasıl ölçeceğini öner.",
+    "a": "“Bu ekranda devam etmek için ne yapacağınızı nasıl anladınız?” Açık bir onay özeti ekleyip yardımsız tamamlama oranını karşılaştırırım.",
+    "why": "Ölçümün önerdiğin değişikliğin işe yarayıp yaramadığını gösterebilmesi gerekir."
+  },
+  {
+    "id": "ibe-10",
+    "kind": "w",
+    "p": "Kullanımı kolay bir sistem yine de neden kötü bir kullanıcı deneyimi (UX) yaşatabilir? Bir örnek ver.",
+    "a": "Görev hızla tamamlanabilir, fakat dil güven vermiyorsa veya kullanıcı süreçten endişeyle ayrılıyorsa genel deneyim zayıf olabilir.",
+    "why": "Görevi tamamlamanın kolaylığı ile kullanıcının süreç boyunca hissettiklerini ayrı ayrı ele al."
+  }
+];
+
+const bulut = [
+  {
+    "id": "bulut-1",
+    "kind": "q",
+    "p": "Bulut sağlayıcı işletim sistemini ve çalışma ortamını yönetiyor. Sen kodunu yükleyip uygulamayı çalıştırıyorsun. Bu hangi hizmet modelidir?",
+    "a": "PaaS",
+    "options": [
+      "PaaS",
+      "IaaS",
+      "SaaS",
+      "Yerel LAN"
+    ],
+    "why": "PaaS’ta sağlayıcı çalışma platformunu yönetir. Uygulamanın kodu geliştiricinin sorumluluğundadır.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-2",
+    "kind": "q",
+    "p": "Tarayıcıdan hazır bir e-posta hizmeti kullanmak hangi bulut hizmet modeline örnektir?",
+    "a": "SaaS",
+    "options": [
+      "SaaS",
+      "IaaS",
+      "PaaS",
+      "VPC"
+    ],
+    "why": "SaaS’ta kullanıcı, sağlayıcının çalıştırdığı hazır uygulamayı kullanır.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-3",
+    "kind": "q",
+    "p": "İstenen dosyanın CDN’in cache’inde geçerli bir kopyası bulunuyor. Bu duruma ne denir?",
+    "a": "Cache hit",
+    "options": [
+      "Cache hit",
+      "Cache miss",
+      "Origin fail",
+      "Key rotation"
+    ],
+    "why": "Cache hit olduğunda CDN, geçerli kopyayı cache’den sunabilir.",
+    "ref": "Hafta02 - Modern_CDN_Mimarisi.pdf · Origin, edge ve cache hit/miss"
+  },
+  {
+    "id": "bulut-4",
+    "kind": "q",
+    "p": "Bir CDN, içeriği kullanıcıya yakın bir sunucudan sunarak hangi sorunu azaltabilir?",
+    "a": "İçeriğin kullanıcıya ulaşma süresini",
+    "options": [
+      "İçeriğin kullanıcıya ulaşma süresini",
+      "Kullanıcının kimliğini doğrulama ihtiyacını",
+      "Uygulamadaki bütün hataları",
+      "Ağ yönlendirmesi ihtiyacını"
+    ],
+    "why": "Kullanıcıya yakın bir sunucudan cevap almak gecikmeyi azaltabilir.",
+    "ref": "Hafta02 - Modern_CDN_Mimarisi.pdf · Origin, edge ve cache hit/miss"
+  },
+  {
+    "id": "bulut-5",
+    "kind": "q",
+    "p": "Sistem, oturum açmış bir kullanıcının kaydı silme izni olup olmadığına bakıyor. Bu hangi işlemdir?",
+    "a": "Authorization (yetkilendirme)",
+    "options": [
+      "Authorization (yetkilendirme)",
+      "Authentication (kimlik doğrulama)",
+      "Encryption (şifreleme)",
+      "Caching (önbelleğe alma)"
+    ],
+    "why": "Authorization (yetkilendirme), kullanıcının hangi işlemleri yapabileceğini belirler.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  },
+  {
+    "id": "bulut-6",
+    "kind": "q",
+    "p": "Her dakika ölçülen CPU kullanım yüzdesi hangi izleme verisine örnektir?",
+    "a": "Metric (metrik)",
+    "options": [
+      "Metric (metrik)",
+      "Log kaydı",
+      "Şifreleme anahtarı",
+      "DNS kaydı"
+    ],
+    "why": "Metric (metrik), zaman içinde ölçülen sayısal bir değerdir.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  },
+  {
+    "id": "bulut-7",
+    "kind": "q",
+    "p": "Bir uygulamanın gerçekleşen olayları saat ve tarih bilgisiyle yazdığı kayıtlar nedir?",
+    "a": "Log",
+    "options": [
+      "Log",
+      "Alarm",
+      "MFA",
+      "CDN"
+    ],
+    "why": "Log, bir hata veya oturum açma gibi tekil olayların kaydını tutar.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  },
+  {
+    "id": "bulut-8",
+    "kind": "q",
+    "p": "AWS’de EC2 sanal işlem gücü sağlar. OpenStack’te işlem kaynaklarını hangi bileşen yönetir?",
+    "a": "Nova",
+    "options": [
+      "Nova",
+      "Swift",
+      "Neutron",
+      "Keystone"
+    ],
+    "why": "Nova, OpenStack’te sanal işlem kaynaklarının yönetimiyle ilgilenir.",
+    "ref": "Hafta04 - Cloud_Computing_AWS_vs_OpenStack.pdf · AWS ve OpenStack servisleri karşılaştırma tablosu"
+  },
+  {
+    "id": "bulut-9",
+    "kind": "q",
+    "p": "AWS’de S3 nesne depolama sağlar. OpenStack’te hangi bileşen bu alanda çalışır?",
+    "a": "Swift",
+    "options": [
+      "Swift",
+      "Nova",
+      "Cinder",
+      "Keystone"
+    ],
+    "why": "Swift, OpenStack’in nesne depolama bileşenidir.",
+    "ref": "Hafta04 - Cloud_Computing_AWS_vs_OpenStack.pdf · AWS ve OpenStack servisleri karşılaştırma tablosu"
+  },
+  {
+    "id": "bulut-10",
+    "kind": "m",
+    "p": "OpenStack bileşenlerini görevleriyle eşleştir.",
+    "a": [
+      [
+        "Nova",
+        "İşlem"
+      ],
+      [
+        "Neutron",
+        "Ağ"
+      ],
+      [
+        "Keystone",
+        "Kimlik"
+      ],
+      [
+        "Cinder",
+        "Blok depolama"
+      ]
+    ],
+    "why": "Nova işlem kaynaklarını, Neutron ağı, Keystone kimlik hizmetini, Cinder blok depolamayı yönetir.",
+    "ref": "Hafta04 - Cloud_Computing_AWS_vs_OpenStack.pdf · AWS ve OpenStack servisleri karşılaştırma tablosu"
+  },
+  {
+    "id": "bulut-11",
+    "kind": "o",
+    "p": "Bir dosya CDN’in cache’inde yok (cache miss). İsteğin nasıl karşılandığını sırala.",
+    "a": [
+      "İstek kullanıcıya yakın CDN sunucusuna gelir",
+      "CDN cache’de geçerli kopya bulamaz",
+      "CDN dosyayı origin server’dan alır",
+      "CDN dosyayı kullanıcıya gönderir"
+    ],
+    "why": "CDN, elinde geçerli kopya yoksa dosyayı origin server’dan alabilir.",
+    "ref": "Hafta02 - Modern_CDN_Mimarisi.pdf · Origin, edge ve cache hit/miss"
+  },
+  {
+    "id": "bulut-12",
+    "kind": "w",
+    "p": "Videolar geç açılıyor ve ekip hata oranı yükselince bunu fark etmek istiyor. Bu iki sorun için hangi bileşenleri kullanırsın?",
+    "a": "Videonun sık istenen bölümlerini kullanıcıya yakın sunmak için CDN kullanırım. Hata oranını bir metric ile takip eder, oran belirlediğim eşiği aşınca alarm oluştururum.",
+    "why": "Video dağıtımı için bir çözüm, hata oranını ölçmek ve bildirmek için ayrı bir izleme çözümü öner.",
+    "ref": "Hafta02 - Video_Streaming_Architecture.pdf · Video kalitesi ve akış"
+  },
+  {
+    "id": "bulut-ek-1",
+    "kind": "q",
+    "p": "Bir ekip sanal makine kiralıyor ve işletim sistemi güncellemelerini kendi yapıyor. Hangi model?",
+    "a": "IaaS",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "CDN"
+    ],
+    "why": "Sanal makineyi sağlayıcı sunar. İşletim sistemini ve uygulamayı ekip yönetir.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-ek-2",
+    "kind": "q",
+    "p": "Şirket hassas verileri kendi private cloud’unda tutuyor. Dönemsel yoğunlukta public cloud ile bağlantılı ek kapasite kullanıyor. Hangi dağıtım modeli?",
+    "a": "Hybrid cloud",
+    "options": [
+      "Hybrid cloud",
+      "SaaS",
+      "Public cloud",
+      "Private cloud"
+    ],
+    "why": "Private ve public ortamlar birbirine bağlanarak aynı iş yükünü destekliyor. SaaS ise bir hizmet modelidir.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-ek-3",
+    "kind": "q",
+    "p": "Kampanya başlayınca sistem kapasiteyi artırıyor, trafik düşünce kapasiteyi geri bırakıyor. Bu özellik nedir?",
+    "a": "Elasticity",
+    "options": [
+      "Elasticity",
+      "Measured service",
+      "Authentication",
+      "Federation"
+    ],
+    "why": "Elasticity, kapasitenin talebe göre artıp azalmasıdır. Senaryoda iki yönlü değişim var.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-ek-4",
+    "kind": "q",
+    "p": "Sağlayıcı, kullanılan depolama ve işlem süresini ölçerek faturayı bu değerlere göre çıkarıyor. Hangi özellik?",
+    "a": "Measured service",
+    "options": [
+      "Measured service",
+      "Broad network access",
+      "Private cloud",
+      "Cache hit"
+    ],
+    "why": "Hizmetin tüketimi ölçülüyor ve raporlanıyor. Senaryonun belirleyici ayrıntısı kullanılan miktarın ölçülmesi.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-ek-5",
+    "kind": "q",
+    "p": "Bir ekip, destek talebi açmadan yönetim panelinden kendi sanal makinesini başlatabiliyor. Bu hangi özelliktir?",
+    "a": "On-demand self-service",
+    "options": [
+      "On-demand self-service",
+      "Resource pooling",
+      "Rapid elasticity",
+      "Hybrid cloud"
+    ],
+    "why": "Kullanıcı, sağlayıcının bir çalışanına başvurmadan kaynağı kendi başına devreye alıyor.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-ek-6",
+    "kind": "q",
+    "p": "Bir sağlayıcı fiziksel sunucu kapasitesini birçok müşteri arasında talebe göre paylaştırıyor. Bu hangi kavramdır?",
+    "a": "Resource pooling",
+    "options": [
+      "Resource pooling",
+      "Authentication",
+      "Object storage",
+      "Cache miss"
+    ],
+    "why": "Fiziksel kaynaklar ortak bir havuzdan ayrılıyor. Bir müşterinin her zaman aynı fiziksel sunucuyu kullanması gerekmiyor.",
+    "ref": "1.hafta-ders öncesi hazırlık.txt · Bulutun temel özellikleri, hizmet ve dağıtım modelleri"
+  },
+  {
+    "id": "bulut-ek-7",
+    "kind": "q",
+    "p": "Bir kullanıcı bir görseli ilk kez istiyor. Yakın CDN sunucusunda dosya yok. Sunucu nereden alabilir?",
+    "a": "Origin server",
+    "options": [
+      "Origin server",
+      "IAM",
+      "CloudWatch",
+      "Kullanıcının tarayıcı geçmişi"
+    ],
+    "why": "Bu bir cache miss. CDN, dosyanın asıl kaynağı olan origin server’a başvurabilir.",
+    "ref": "Hafta02 - Modern_CDN_Mimarisi.pdf · Origin, edge ve cache hit/miss"
+  },
+  {
+    "id": "bulut-ek-8",
+    "kind": "q",
+    "p": "Bir ürün görseli güncellendiği hâlde bazı kullanıcılar eski hâlini görüyor. CDN tarafında neyi kontrol edersin?",
+    "a": "Cache’deki kopyanın ne zaman yenilendiğini",
+    "options": [
+      "Cache’deki kopyanın ne zaman yenilendiğini",
+      "Kullanıcıların MFA ayarını",
+      "CPU metriğinin birimini",
+      "OpenStack kimlik sağlayıcısını"
+    ],
+    "why": "Bir CDN, kopya geçerli sayıldığı sürece onu sunabilir. Önce cache süresini ve eski kopyanın yenilenip yenilenmediğini incele.",
+    "ref": "Hafta02 - Modern_CDN_Mimarisi.pdf · Origin, edge ve cache hit/miss"
+  },
+  {
+    "id": "bulut-ek-9",
+    "kind": "q",
+    "p": "Video oynarken internet yavaşlıyor. Oynatıcı daha düşük kaliteli video parçalarına geçiyor. Hangi kavram?",
+    "a": "Adaptive bitrate streaming",
+    "options": [
+      "Adaptive bitrate streaming",
+      "Object storage",
+      "MFA",
+      "Resource pooling"
+    ],
+    "why": "Oynatıcı mevcut bağlantıya uygun bir kalite düzeyi seçerek duraklamaları azaltmaya çalışır.",
+    "ref": "Hafta02 - Video_Streaming_Architecture.pdf · Video kalitesi ve akış"
+  },
+  {
+    "id": "bulut-ek-10",
+    "kind": "q",
+    "p": "İki bağımsız bulut sağlayıcısı kendi altyapısını yönetmeye devam ediyor, fakat iş yükleri için ortak kaynak kullanabiliyor. Hangi kavram?",
+    "a": "Federated cloud",
+    "options": [
+      "Federated cloud",
+      "Tek sağlayıcılı private cloud",
+      "Cache hit",
+      "SaaS"
+    ],
+    "why": "Federation, bağımsız ortamların iş birliği yapabilmesini sağlar. Senaryoda iki ortam da kendi yönetimini sürdürüyor.",
+    "ref": "Hafta02 - The_Federated_Cloud_Ecosystem.pdf · Federe bulutun anatomisi"
+  },
+  {
+    "id": "bulut-ek-11",
+    "kind": "q",
+    "p": "Bir parola sızmış olsa da saldırgan telefondaki doğrulama adımını geçemiyor. Hangi kontrol işe yaradı?",
+    "a": "MFA",
+    "options": [
+      "MFA",
+      "Logging",
+      "Encryption at rest",
+      "Autoscaling"
+    ],
+    "why": "MFA ikinci bir doğrulama faktörü ister. Parolayı ele geçirmek, bu faktörü tek başına sağlamaz.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  },
+  {
+    "id": "bulut-ek-12",
+    "kind": "q",
+    "p": "Ekip geçmişte hangi hesabın, hangi saatte başarısız giriş yaptığını araştırıyor. Önce neye bakmalı?",
+    "a": "Log kayıtlarına",
+    "options": [
+      "Log kayıtlarına",
+      "CPU metriğine",
+      "CDN cache’ine",
+      "Depolama faturasına"
+    ],
+    "why": "Belirli bir giriş olayının zamanı ve hesabı log kaydında bulunabilir. Toplam hata sayısını görmek için ise metric kullanılır.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  },
+  {
+    "id": "bulut-ek-13",
+    "kind": "q",
+    "p": "Disk kopyası yetkisiz birinin eline geçerse, dosyaların okunmasını zorlaştırmak istiyorsun. Hangi kontrol?",
+    "a": "Encryption at rest",
+    "options": [
+      "Encryption at rest",
+      "Encryption in transit",
+      "Alarm",
+      "Load balancing"
+    ],
+    "why": "Dosyalar saklanırken şifrelenir. Encryption in transit, veriyi ağ üzerinden aktarırken korur.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  },
+  {
+    "id": "bulut-ek-14",
+    "kind": "q",
+    "p": "Uygulamanın dosya deposundan okuması gerekiyor. Silme yetkisine ihtiyacı yok. Hangi yaklaşım?",
+    "a": "Least privilege",
+    "options": [
+      "Least privilege",
+      "Herkese yönetici yetkisi",
+      "Cache invalidation",
+      "Resource pooling"
+    ],
+    "why": "Uygulamaya işini yapması için gereken en az izin verilir. Bu örnekte okuma yeterli.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  },
+  {
+    "id": "bulut-ek-15",
+    "kind": "q",
+    "p": "Sanal makinenin işletim sistemi için ayrı bir disk hacmi gerekiyor. OpenStack’te hangi bileşeni seçersin?",
+    "a": "Cinder",
+    "options": [
+      "Cinder",
+      "Swift",
+      "Neutron",
+      "Keystone"
+    ],
+    "why": "Cinder block storage sağlar. Swift ise nesne depolama içindir.",
+    "ref": "Hafta04 - Cloud_Computing_AWS_vs_OpenStack.pdf · AWS ve OpenStack servisleri karşılaştırma tablosu"
+  },
+  {
+    "id": "bulut-ek-16",
+    "kind": "q",
+    "p": "OpenStack ortamında proje kullanıcılarının kimliğini ve erişimini yönetmen gerekiyor. Hangi bileşen?",
+    "a": "Keystone",
+    "options": [
+      "Keystone",
+      "Nova",
+      "Swift",
+      "Cinder"
+    ],
+    "why": "Keystone kimlik hizmetidir. Nova işlem kaynaklarını, Swift nesneleri, Cinder disk hacimlerini yönetir.",
+    "ref": "Hafta04 - Cloud_Computing_AWS_vs_OpenStack.pdf · AWS ve OpenStack servisleri karşılaştırma tablosu"
+  },
+  {
+    "id": "bulut-ek-17",
+    "kind": "q",
+    "p": "OpenStack’te iki sanal makineyi bir sanal ağa bağlamak istiyorsun. Hangi bileşen?",
+    "a": "Neutron",
+    "options": [
+      "Neutron",
+      "Nova",
+      "Keystone",
+      "Swift"
+    ],
+    "why": "Neutron ağ hizmetidir. Sanal ağ ve bağlantı yapılandırması burada yapılır.",
+    "ref": "Hafta04 - Cloud_Computing_AWS_vs_OpenStack.pdf · AWS ve OpenStack servisleri karşılaştırma tablosu"
+  },
+  {
+    "id": "bulut-ek-18",
+    "kind": "q",
+    "p": "HTTP 5xx oranı beş dakika boyunca %5’i aşınca ekibe bildirim gitmeli. Hangi ikili gerekir?",
+    "a": "Metric ve alarm",
+    "options": [
+      "Metric ve alarm",
+      "MFA ve CDN",
+      "Object storage ve cache hit",
+      "DNS ve router"
+    ],
+    "why": "Metric hata oranını ölçer. Alarm, belirlenen eşik ve süre koşulu sağlandığında haber verir.",
+    "ref": "hafta03.pdf · Bulutta Güvenlik ve İzleme"
+  }
+];
+
+const three = [
+  {
+    "id": "three-1",
+    "kind": "q",
+    "p": "Three.js’te geometry ile material’ı bir araya getiren sınıf hangisidir?",
+    "a": "Mesh",
+    "options": [
+      "Mesh",
+      "Camera",
+      "Vector3",
+      "Clock"
+    ],
+    "why": "Mesh, geometry ile tanımlanan şekli material ile tanımlanan yüzey özellikleriyle birleştirir."
+  },
+  {
+    "id": "three-2",
+    "kind": "q",
+    "p": "Three.js’te sahneyi seçilen kameradan çizdirmek için hangi metot çağrılır?",
+    "a": "renderer.render(scene, camera)",
+    "options": [
+      "renderer.render(scene, camera)",
+      "scene.render(renderer)",
+      "camera.render(mesh)",
+      "geometry.updateProjectionMatrix()"
+    ],
+    "why": "renderer.render(scene, camera) sahneyi verilen kameranın açısından çizer."
+  },
+  {
+    "id": "three-3",
+    "kind": "q",
+    "p": "Ay modeli, Dünya’nın yörünge Group’una bağlı. Bu Group dönerse Ay’ın konumu nasıl etkilenir?",
+    "a": "Ay, Group ile birlikte hareket eder",
+    "options": [
+      "Ay, Group ile birlikte hareket eder",
+      "Ay’ın sahnedeki konumu değişmez",
+      "Ay’ın material’ı değişir",
+      "Renderer çalışmayı durdurur"
+    ],
+    "why": "Ay’ın Group içindeki yerel konumu aynı kalabilir. Grup dönünce Ay’ın sahnedeki konumu grup ile birlikte değişir."
+  },
+  {
+    "id": "three-4",
+    "kind": "q",
+    "p": "Uzaktaki nesnelerin perspektif nedeniyle daha küçük görünmesini istemiyorsun. Hangi kamera sınıfını seçersin?",
+    "a": "OrthographicCamera",
+    "options": [
+      "OrthographicCamera",
+      "PerspectiveCamera",
+      "DirectionalLight",
+      "OrbitControls"
+    ],
+    "why": "OrthographicCamera kullanıldığında nesnenin görünür boyutu kameraya olan uzaklığına göre küçülmez."
+  },
+  {
+    "id": "three-5",
+    "kind": "q",
+    "p": "Bir Three.js modelinin kutu veya küre biçiminde olmasını hangi bileşen belirler?",
+    "a": "Geometry",
+    "options": [
+      "Geometry",
+      "Material",
+      "Renderer",
+      "Light"
+    ],
+    "why": "Geometry modelin biçimini, material ise yüzeyinin nasıl göründüğünü belirler."
+  },
+  {
+    "id": "three-6",
+    "kind": "q",
+    "p": "Tarayıcı penceresinin boyutu değiştiğinde PerspectiveCamera için hangi güncelleme gerekir?",
+    "a": "camera.aspect değerini ve projeksiyon matrisini güncellemek",
+    "options": [
+      "camera.aspect değerini ve projeksiyon matrisini güncellemek",
+      "Bütün material’ları yeniden oluşturmak",
+      "Kamerayı scene’den çıkarmak",
+      "Her nesneyi ölçeklemek"
+    ],
+    "why": "Yeni en-boy oranını camera.aspect değerine ata ve camera.updateProjectionMatrix() metodunu çağır."
+  },
+  {
+    "id": "three-7",
+    "kind": "q",
+    "p": "Three.js’te belirli bir noktadan çevreye ışık yayan sınıf hangisidir?",
+    "a": "PointLight",
+    "options": [
+      "PointLight",
+      "AmbientLight",
+      "BoxGeometry",
+      "OrthographicCamera"
+    ],
+    "why": "PointLight, konumlandırıldığı noktadan etrafa ışık yayar."
+  },
+  {
+    "id": "three-8",
+    "kind": "q",
+    "p": "Three.js’te zeminin üzerine gölge düşebilmesi için zemindeki hangi özellik açılır?",
+    "a": "receiveShadow",
+    "options": [
+      "receiveShadow",
+      "castShadow",
+      "wireframe",
+      "rotation"
+    ],
+    "why": "Gölgeyi alan zeminde receiveShadow, gölgeyi oluşturan nesnede castShadow kullanılır."
+  },
+  {
+    "id": "three-9",
+    "kind": "m",
+    "p": "Three.js bileşenlerini görevleriyle eşleştir.",
+    "a": [
+      [
+        "Scene",
+        "Sahnedeki nesneleri barındırır"
+      ],
+      [
+        "Camera",
+        "Sahneye nereden ve nasıl bakıldığını belirler"
+      ],
+      [
+        "Renderer",
+        "Sahneyi seçilen kameradan çizer"
+      ],
+      [
+        "Group",
+        "Bağlı nesneleri birlikte hareket ettirir"
+      ]
+    ],
+    "why": "Scene nesneleri barındırır. Camera bakış açısını, renderer çizimi, Group ise bağlı nesnelerin ortak hareketini yönetir."
+  },
+  {
+    "id": "three-10",
+    "kind": "o",
+    "p": "Dönen küp örneğini kurmak için aşağıdaki adımları sırala.",
+    "a": [
+      "Scene, camera ve renderer’ı oluştur",
+      "Küp için bir Mesh oluşturup Scene’e ekle",
+      "Kamerayı küpü görecek konuma yerleştir",
+      "Animasyon döngüsünde küpü döndür ve sahneyi çiz"
+    ],
+    "why": "Önce sahne ve küp hazırlanır. Animasyon döngüsü her karede küpü döndürüp sahneyi çizer."
+  },
+  {
+    "id": "three-11",
+    "kind": "t",
+    "p": "Bu kod hangi hatayı verir?\nfunction animate(time) { return time / 1000; }\nconsole.log(time);",
+    "a": "ReferenceError",
+    "why": "time, animate fonksiyonunun parametresidir. Fonksiyonun dışında bu isim tanımlı değildir."
+  },
+  {
+    "id": "three-12",
+    "kind": "w",
+    "p": "Dünya kendi ekseni etrafında dönerken Ay da Dünya’nın etrafında dolansın. Three.js’te Mesh ve Group kullanarak bunu nasıl kurarsın?",
+    "a": "Dünya Mesh’ini kendi ekseni etrafında döndürürüm. Dünya’nın bulunduğu noktaya ayrı bir Group koyarım. Ay Mesh’ini bu Group’un merkezinden biraz uzağa yerleştiririm. Group’u döndürdüğümde Ay, Dünya’nın etrafında dolanır.",
+    "why": "Dünya’nın kendi eksenindeki dönüşünü Ay’ın yörüngesinden ayrı kur."
+  }
+];
+
+function typed(id, p, a, why) {
+  return { id, kind: "t", p, a: String(a), why };
+}
+
+function variants(course) {
+  if (course === "js") {
+    return Array.from({ length: 12 }, (_, i) => {
+      const n = i + 3;
+      const m = (i % 5) + 2;
+      return [
+        typed(`js-text-${n}`, `Konsolda ne görünür?\nconsole.log('${n}' + ${m});`, `${n}${m}`, "İlk değer string olduğu için + bu iki değeri metin olarak birleştirir."),
+        typed(`js-number-${n}`, `Konsolda ne görünür?\nconsole.log(Number('${n}') + ${m});`, n + m, "Number() string değeri sayıya çevirir. + iki sayıyı toplar."),
+        typed(`js-loop-${n}`, `Konsolda ne görünür?\nlet s = ${m};\nfor (let i = 1; i < ${n}; i++) s += i;\nconsole.log(s);`, m + n * (n - 1) / 2, `s başlangıçta ${m}. Döngü, 1’den ${n - 1}’e kadar her sayıyı s’ye ekler.`),
+        typed(`js-filter-${n}`, `Konsolda ne görünür?\nconst xs = [${n - 1}, ${n}, ${n + 1}, ${n + 3}];\nconsole.log(xs.filter(x => x > ${n}).map(x => x * ${m}).join(','));`, `${(n + 1) * m},${(n + 3) * m}`, `filter(), ${n} değerinden büyük elemanları seçer. map() her sonucu ${m} ile çarpar. join() aralarına virgül koyar.`)
+      ];
+    }).flat();
+  }
+  if (course === "three") {
+    return Array.from({ length: 10 }, (_, i) => {
+      const parent = i + 2;
+      const child = 2 * i - 5;
+      return typed(`three-position-${i}`, `Bir Group, sahnede x = ${parent} konumunda. Bu Group’a bağlı bir Mesh’in yerel konumu x = ${child}. Group’ta dönme veya ölçek değişikliği yoksa Mesh’in sahneye göre x koordinatı kaçtır?`, parent + child, "Bu örnekte Mesh’in sahneye göre konumu, Group’un konumu ile Mesh’in yerel konumunun toplamıdır.");
+    });
+  }
+  if (course === "guvenlik") {
+    return [[5,11],[7,11],[7,13],[11,13],[11,17],[13,17],[13,19]].map(([p,q]) => {
+      const phi = (p - 1) * (q - 1);
+      return {id:`rsa-${p}-${q}`,kind:"q",p:`Küçük RSA örneğinde p=${p} ve q=${q}. φ(n) kaçtır?`,a:String(phi),options:[phi,p*q,p+q,phi+1].map(String),why:`p ve q farklı asal sayılar olduğu için φ(n) = (p − 1)(q − 1) = ${phi}.`,
+        ref:"Web Güvenliği-04-Şifreleme Algoritmaları_2_0.pdf · s. 23–28 ve 35–38, RSA örnekleri"};
+    });
+  }
+  return [];
+}
+
+
+const banks = { js, ai, web, etik, guvenlik, ibe, bulut, three };
+const pools = Object.fromEntries(courses.map(({ id }) => [id, [...banks[id], ...variants(id)]]));
+const kinds = { q: "Çoktan seçmeli", t: "Kısa yanıt", o: "Sıralama", m: "Eşleştirme", w: "Açık uçlu" };
+const root = document.querySelector("main");
+const storageKey = "vize-atolyesi-2026-v1";
+let data;
+let persistent = true;
+try {
+  data = JSON.parse(localStorage.getItem(storageKey)) || {};
+} catch {
+  data = {};
+  persistent = false;
+}
+let course;
+let mode = "mix";
+let turn;
+let reviewing = false;
+
+function state(id) {
+  return data[id] ??= { seen: [], attempts: {} };
+}
+
+function save() {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(data));
+  } catch {
+    persistent = false;
+    document.querySelector(".local").textContent = "İlerleme bu oturumda";
+  }
+}
+
+function shuffled(items) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function h(tag, attrs = {}, ...children) {
+  const el = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs)) {
+    if (value === false || value == null) continue;
+    if (key.startsWith("on")) el.addEventListener(key.slice(2), value);
+    else el.setAttribute(key, value === true ? "" : value);
+  }
+  for (const child of children.flat(Infinity)) {
+    if (child != null) el.append(child);
+  }
+  return el;
+}
+const button = (label, click, extra = {}) => h("button", { type: "button", class: "btn", onclick: click, ...extra }, label);
+
+function totals(id, pool = pools[id], attempts = state(id).attempts) {
+  const completed = pool.filter(q => attempts[q.id]);
+  const correct = completed.filter(q => attempts[q.id].correct).length;
+  return { done: completed.length, wrong: completed.length - correct, correct,
+    success: completed.length ? Math.round(correct * 100 / completed.length) : null };
+}
+
+function currentRound() {
+  return mode === "review" ? undefined : state(course.id).rounds?.[mode];
+}
+
+function startRound() {
+  const progress = state(course.id);
+  progress.rounds ??= {};
+  progress.rounds[mode] = { attempts: {}, skipped: [] };
+  save();
+  nextQuestion();
+}
+
+function showHome() {
+  const total = Object.values(pools).reduce((sum, list) => sum + list.length, 0);
+  root.replaceChildren(
+    h("section", { class: "hero" },
+      h("span", { class: "eyebrow" }, "Vize hazırlığı · Kasım 2026"),
+      h("h1", {}, "Bugün ne çalışıyoruz?"),
+      h("p", {}, "Bir ders seç, alıştırmaları çöz ve takıldığın sorulara geri dön. Her derste yeni sorular önce gelir.")),
+    h("div", { class: "section-title" }, h("h2", {}, "Dersler"), h("span", { class: "small" }, `8 ders · ${total} soru`)),
+    h("div", { class: "grid" }, courses.map((c, i) => {
+      const { done, wrong, success } = totals(c.id);
+      return h("a", { class: "card", href: `#${c.id}` },
+        h("span", { class: "badge" }, `${String(i + 1).padStart(2, "0")} · ${c.short}`),
+        h("h3", {}, c.name), h("span", { class: "small" }, c.format),
+        h("span", { class: "small" }, `${done}/${pools[c.id].length} cevaplandı${success === null ? "" : ` · %${success} başarı`}${wrong ? ` · ${wrong} tekrar` : ""} →`));
+    }))
+  );
+}
+
+function candidates() {
+  const list = pools[course.id];
+  if (mode === "review") {
+    const attempts = state(course.id).attempts;
+    return list.filter(q => attempts[q.id] && !attempts[q.id].correct);
+  }
+  return mode === "mix" ? list : list.filter(q => q.kind === mode);
+}
+
+function nextQuestion() {
+  const list = candidates();
+  const progress = currentRound() ?? state(course.id);
+  const skipped = progress.skipped || [];
+  let available = mode === "review" ? [] : list.filter(q => !progress.attempts[q.id] && !skipped.includes(q.id));
+  reviewing = mode === "review" || !available.length;
+  if (reviewing) available = list.filter(q => progress.attempts[q.id]?.correct === false);
+  if (!available.length) {
+    turn = null;
+    showCourse(true);
+    return;
+  }
+  if (available.length > 1) available = available.filter(q => q.id !== turn?.q.id);
+  const different = available.filter(q => q.kind !== turn?.q.kind);
+  const q = shuffled(different.length ? different : available)[0];
+  const sequence = q.kind === "o" ? shuffled(q.a) : [];
+  if (sequence.length > 1 && sequence.every((item, i) => item === q.a[i])) sequence.push(sequence.shift());
+  turn = { q, options: shuffled(q.options || []), pairOptions: q.kind === "m" ? shuffled(q.a.map(([, a]) => a)) : [],
+    sequence, selected: "", input: "", pairs: {}, revealed: false, result: null };
+  showCourse(true);
+}
+
+function skipQuestion() {
+  const progress = currentRound() ?? state(course.id);
+  progress.skipped ??= [];
+  if (!progress.skipped.includes(turn.q.id)) progress.skipped.push(turn.q.id);
+  save();
+  nextQuestion();
+}
+
+function finish(correct) {
+  if (turn.result !== null) return;
+  turn.result = correct;
+  const attempts = state(course.id).attempts;
+  const last = attempts[turn.q.id];
+  attempts[turn.q.id] = { correct, count: (last?.count ?? 0) + 1 };
+  const round = currentRound();
+  if (round) round.attempts[turn.q.id] = { correct };
+  save();
+  showCourse();
+  document.querySelector("#feedback")?.focus();
+}
+
+function normalized(value) {
+  return value.trim().replace(/^(['"])(.*)\1$/, "$2").replace(/\s*,\s*/g, ",").toLocaleLowerCase("en-US");
+}
+
+function check() {
+  const { q } = turn;
+  if (q.kind === "q") finish(turn.selected === q.a);
+  if (q.kind === "t") finish(normalized(turn.input) === normalized(q.a));
+  if (q.kind === "o") finish(q.a.every((v, i) => v === turn.sequence[i]));
+  if (q.kind === "m") finish(q.a.every(([k, v]) => turn.pairs[k] === v));
+  if (q.kind === "w") {
+    turn.revealed = true;
+    showCourse();
+    document.querySelector("#feedback")?.focus();
+  }
+}
+
+function isReady() {
+  switch (turn.q.kind) {
+    case "q": return Boolean(turn.selected);
+    case "t":
+    case "w": return Boolean(turn.input.trim());
+    case "m": return turn.q.a.every(([k]) => turn.pairs[k]);
+    default: return true;
+  }
+}
+
+function updateCheck() {
+  document.querySelector("#check").disabled = !isReady();
+}
+
+function exerciseInput() {
+  const { q, result, revealed } = turn;
+  const locked = result !== null || revealed;
+  if (q.kind === "q") return h("div", { class: "options" }, turn.options.map((value, i) => {
+    const selected = turn.selected === value;
+    const css = locked && value === q.a ? "correct" : locked && selected ? "wrong" : selected ? "selected" : "";
+    return h("button", {
+      type: "button", class: `opt ${css}`, "aria-pressed": String(selected), disabled: locked,
+      onclick: event => {
+        turn.selected = value;
+        for (const option of document.querySelectorAll(".opt")) {
+          const active = option === event.currentTarget;
+          option.classList.toggle("selected", active);
+          option.setAttribute("aria-pressed", String(active));
+        }
+        updateCheck();
+      }
+    }, h("span", {}, String.fromCharCode(65 + i)), h("span", {}, value));
+  }));
+  if (q.kind === "t" || q.kind === "w") {
+    const el = h(q.kind === "t" ? "input" : "textarea", { class: "answer", "aria-label": "Cevabın",
+      placeholder: q.kind === "t" ? "Cevabını yaz" : "Kendi cevabını yaz, ardından örnekle karşılaştır",
+      disabled: locked, oninput: event => { turn.input = event.target.value; updateCheck(); },
+      onkeydown: event => { if (q.kind === "t" && event.key === "Enter" && isReady() && !locked) check(); } });
+    el.value = turn.input;
+    return el;
+  }
+  if (q.kind === "m") return h("div", { class: "pairs" }, q.a.map(([name], i) => {
+    const select = h("select", { id: `pair-${i}`, disabled: locked, onchange: event => {
+      turn.pairs[name] = event.target.value;
+      updateCheck();
+    } }, h("option", { value: "" }, "Eşleştir"), turn.pairOptions.map(x => h("option", { value: x }, x)));
+    select.value = turn.pairs[name] || "";
+    return h("div", { class: "pair" }, h("label", { for: `pair-${i}` }, name), select);
+  }));
+  return h("ol", { class: "order" }, turn.sequence.map((value, i) => {
+    function move(delta) {
+      [turn.sequence[i], turn.sequence[i + delta]] = [turn.sequence[i + delta], turn.sequence[i]];
+      showCourse();
+      const target = i + delta;
+      const control = document.querySelector(`#move-${target}-${delta}`);
+      (control?.disabled ? document.querySelector(`#move-${target}-${-delta}`) : control)?.focus();
+    }
+    return h("li", { class: "step" }, h("span", {}, `${i + 1}. ${value}`), h("span", { class: "moves" },
+      button("↑", () => move(-1), { id: `move-${i}--1`, "aria-label": `${value} yukarı`, disabled: locked || i === 0 }),
+      button("↓", () => move(1), { id: `move-${i}-1`, "aria-label": `${value} aşağı`, disabled: locked || i === turn.sequence.length - 1 })));
+  }));
+}
+
+function explanation() {
+  const { q, result, revealed } = turn;
+  if (result === null && !revealed) return null;
+  const answer = q.kind === "m" ? q.a.map(([k, v]) => `${k} → ${v}`).join("\n")
+    : q.kind === "o" ? q.a.map((v, i) => `${i + 1}. ${v}`).join("\n") : q.a;
+  return h("div", { id: "feedback", class: `feedback ${result === true ? "good" : result === false ? "bad" : ""}`, tabindex: "-1", "aria-live": "polite" },
+    h("strong", {}, q.kind === "w" ? "Örnek cevap" : result ? "Doğru" : "Tekrara eklendi"),
+    h("p", {}, answer), h("p", {}, h("strong", {}, q.kind === "w" ? "Cevabını değerlendir. " : "Bu cevap neden doğru? "), q.why),
+    q.ref ? h("p", { class: "small" }, h("strong", {}, "Kaynak "), q.ref) : null);
+}
+
+function questionPanel() {
+  if (!turn) {
+    const progress = currentRound() ?? state(course.id);
+    const postponed = mode !== "review" && candidates().some(q => !progress.attempts[q.id] && progress.skipped?.includes(q.id));
+    return h("div", {}, h("h2", { id: "question", tabindex: "-1" }, postponed ? "Yeni sorular bitti" : mode === "review" ? "Tekrar kuyruğu boş" : "Bu grubu tamamladın"),
+      postponed ? h("div", {}, h("p", { class: "muted" }, "Daha sonra çözmek için ayırdığın sorular var."),
+        button("Atladığım sorulara dön", () => {
+          const selected = new Set(candidates().map(q => q.id));
+          progress.skipped = progress.skipped.filter(id => !selected.has(id));
+          save();
+          nextQuestion();
+        })) : h("div", {},
+          h("p", { class: "muted" }, "Bu grupta tekrar bekleyen soru yok."),
+          mode === "review" ? button("Tüm sorulara dön", () => {
+            mode = "mix";
+            nextQuestion();
+          }) : button("Yeni tur başlat", startRound, { class: "btn primary" })));
+  }
+  const { q, result, revealed } = turn;
+  const [prompt, ...code] = q.p.split("\n");
+  const actions = [];
+  if (revealed && result === null) {
+    actions.push(button("Ölçütleri karşıladım", () => finish(true), { class: "btn primary" }),
+      button("Tekrar etmek istiyorum", () => finish(false)));
+  } else if (result === null) {
+    actions.push(button(q.kind === "w" ? "Örnek cevabı göster" : "Cevabı kontrol et", check, { id: "check", class: "btn primary", disabled: !isReady() }),
+      reviewing ? null : button("Sonra çöz", skipQuestion));
+  } else {
+    const attempts = (currentRound() ?? state(course.id)).attempts;
+    actions.push(button(reviewing && result === false && candidates().filter(q => attempts[q.id]?.correct === false).length === 1 ? "Tekrar çöz" : "Devam et →", nextQuestion, { class: "btn primary" }));
+  }
+  return h("div", {}, h("span", { class: "badge" }, kinds[q.kind]),
+    reviewing ? h("p", { class: "small" }, "Yanlış tekrarı · Doğru cevapladığında soru bu kuyruktan çıkar.") : null,
+    h("h2", { id: "question", class: "prompt", tabindex: "-1" }, prompt),
+    code.length ? h("pre", {}, h("code", {}, code.join("\n"))) : null,
+    exerciseInput(), explanation(), h("div", { class: "actions" }, actions));
+}
+
+function showCourse(focus = false) {
+  const pool = pools[course.id];
+  const round = currentRound();
+  const scoredPool = round ? candidates() : pool;
+  const { done, wrong, correct, success } = totals(course.id, scoredPool, round?.attempts);
+  const options = [["mix", "Karışık"], ...Object.entries(kinds).filter(([k]) => pool.some(q => q.kind === k)), ["review", "Yanlışlarım"]];
+  const selector = h("select", { id: "mode", onchange: event => {
+    mode = event.target.value;
+    nextQuestion();
+  } }, options.map(([key, label]) => h("option", { value: key }, label)));
+  selector.value = mode;
+  root.replaceChildren(
+    h("a", { class: "back", href: "#" }, "← Tüm dersler"),
+    h("section", { class: "course-head" }, h("span", { class: "eyebrow" }, course.format),
+      h("h1", {}, course.name), h("p", { class: "muted" }, course.source)),
+    h("div", { class: "workspace" },
+      h("section", { class: "panel", "aria-label": "Alıştırma" },
+        h("div", { class: "toolbar" }, h("label", { for: "mode" }, "Soru türü"), selector),
+        h("div", { class: "stats", "aria-live": "polite" },
+          h("span", {}, `${round ? "Bu tur: " : ""}${done}/${scoredPool.length} cevaplandı`),
+          h("strong", {}, success === null ? "Başarı: —" : `Başarı %${success} · ${correct}/${done} doğru`),
+          h("span", {}, `${wrong} tekrar bekliyor`)),
+        h("p", { class: "small" }, round ? "Bu turdaki başarı, burada verdiğin son cevaplara göre hesaplanır." : "Başarı, cevapladığın her sorunun son sonucuna göre hesaplanır."),
+        questionPanel()),
+      h("aside", { class: "side" },
+        h("details", { class: "panel", open: true }, h("summary", {}, "Hızlı konu tekrarı"),
+          h("ul", {}, course.notes.map(note => h("li", {}, note)))),
+        h("div", { class: "panel sources" }, h("h2", {}, "Kaynaklar"), h("p", { class: "small" }, course.source),
+          course.links.map(([label, url]) => h("a", { href: url, target: "_blank", rel: "noopener noreferrer" }, label)))
+      )
+    )
+  );
+  if (focus) document.querySelector("#question")?.focus();
+}
+
+function route() {
+  course = courses.find(c => c.id === location.hash.slice(1));
+  mode = "mix";
+  turn = null;
+  document.title = course ? `${course.name} · Vize Atölyesi` : "Vize Atölyesi";
+  if (course) nextQuestion();
+  else showHome();
+}
+
+if (!persistent) document.querySelector(".local").textContent = "İlerleme bu oturumda";
+document.querySelector(".skip").addEventListener("click", event => {
+  event.preventDefault();
+  root.focus();
+});
+window.addEventListener("hashchange", route);
+route();
+
+})();
+</script>
+</body>
+</html>
